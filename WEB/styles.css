@@ -17,16 +17,18 @@ header {
 .slideshow {
     position: relative;
     width: 100%;
-    height: 90vh; /* Adjust height if necessary for your design */
+    max-height: 90vh; /* Adjust height if necessary for your design */
     overflow: hidden;
   }
 
 .slideshow img {
     width: 100%;
-    height: 100vh;
+    max-height: 100%;
     object-fit: cover; /* Maintains aspect ratio and fills the slider */
     object-position: center; /* Centers the image within the slider */
-    display: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
   
   .slideshow img:first-child {
@@ -111,7 +113,7 @@ main {
 .intro img {
     min-width: 50%;
     height: auto;
-    border-radius: 5px;
+    border-radius: 10px;
     margin-top: 20px;
 }
 
@@ -200,6 +202,7 @@ h2 {
     background-color: transparent;
     color: #95ab57;
     font-size: 18px;
+    border-radius: 7px;
     box-sizing: border-box; /* Include padding/border in width calculation */
   }
   
@@ -212,6 +215,7 @@ h2 {
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    border-radius: 7px;
     box-sizing: border-box; /* Include padding/border in width calculation */
   }
   
