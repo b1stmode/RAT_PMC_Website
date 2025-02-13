@@ -109,7 +109,7 @@ main {
 
 
 .intro img {
-    max-width: 100%;
+    min-width: 50%;
     height: auto;
     border-radius: 5px;
     margin-top: 20px;
