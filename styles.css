@@ -69,7 +69,7 @@ nav ul {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #343a40;
+    background-color: #4A4B2F;
   }
   
   nav ul li {
@@ -95,7 +95,7 @@ main {
     align-items: center;
     text-align: left;
     padding: 50px;
-    background-color: #212529;
+    background-color: #292818;
 }
 
 .intro-text {
@@ -146,7 +146,7 @@ h2 {
 .events {
     text-align: center;
     padding: 50px;
-    color: #343a40;
+    color: #6F7A51;
 }
 
 .event {
@@ -161,7 +161,7 @@ h2 {
 
     max-width: 500px;
 
-    color: #212529;
+    color: #6F7A51;
 
     font-size: 14px; /* Smaller font size */
 
@@ -175,12 +175,12 @@ h2 {
     font-size: 16px; /* Reduced font size for headings */
 
     margin: 5px 0; /* Smaller margins */
-    color: #343a40;
+    color: #95ab57;
 
 }
 
 .join-us {
-    background-color: #212529;
+    background-color: #292818;
     color: #6F7A51;
     text-align: center;
     padding: 50px;
@@ -224,7 +224,7 @@ h2 {
   }
 
 footer {
-    background-color: #495057;
+    background-color: #4A4B2F;
     padding: 10px 20px; /* Adding some padding */
     color: white;
     display: flex;
