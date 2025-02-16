@@ -15,21 +15,22 @@ header {
 }
 
 .slideshow {
-    position: relative;
-    width: 100%;
-    max-height: 90vh; /* Adjust height if necessary for your design */
-    overflow: hidden;
-  }
+  position: relative;
+  width: 100%;
+  max-height: 90vh; /* Keeps the height consistent */
+  overflow: hidden;
+}
 
 .slideshow img {
-    width: 100%;
-    max-height: 100%;
-    object-fit: cover; /* Maintains aspect ratio and fills the slider */
-    object-position: center; /* Centers the image within the slider */
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures images cover the area while maintaining aspect ratio */
+  object-position: center; /* Centers the image */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  vertical-align: middle; /* Ensures vertical alignment */
+}
   
   .slideshow img:first-child {
     display: block;
@@ -62,6 +63,68 @@ header {
     background-color: #ccc;
   }
 
+  .intro-slideshow {
+    position: relative;
+    width: 100%;
+    height: 75vh; /* Adjust height for larger image display */
+    overflow: hidden;
+    margin: 20px 0px 0px 50px;
+    border-radius: 10px;
+    min-width: 50%;
+    height: auto; /* Adjust margin to use full width */
+  }
+  
+  .intro-slideshow .slide {
+    display: none;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  
+  @media (max-width: 1525px) and (min-width: 1024px) {
+    .intro-slideshow {
+      height: 70vh; /* Consistent height to maintain aspect ratio */
+    }
+  }
+  
+  @media (max-width: 1024px) and (min-width: 768px) {
+    .intro-slideshow {
+      height: 70vh;
+    }
+  }
+  @media (max-width: 768px) {
+    .intro-slideshow {
+      margin: 20px auto; /* Center the slideshow horizontally */
+    }
+  }
+  
+  .intro-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    padding: 10px 15px;
+    border-radius: 10px;
+  }
+  
+  .intro-dots .dot {
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .intro-dots .active,
+  .intro-dots .dot:hover {
+    background-color: #717171;
+  }
 nav ul {
     list-style-type: none;
     padding: 0;
@@ -94,7 +157,8 @@ main {
     flex-direction: column;
     align-items: center;
     text-align: left;
-    padding: 50px;
+    padding: 40px;
+
     background-color: #292818;
 }
 

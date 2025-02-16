@@ -11,8 +11,8 @@
 <body>
  <header>
    <div class="slideshow">
-     <img src="imgs/test.webp" alt="Slideshow 1">
-     <img src="imgs/Pasted image.png" alt="Slideshow 2">
+     <img src="imgs/3guys.jpg" alt="Slideshow 1">
+     <img src="imgs/NATO.png" alt="Slideshow 2">
      <div class="dots">
        <span class="dot" onclick="currentSlide(1)"></span>
        <span class="dot" onclick="currentSlide(2)"></span>
@@ -30,16 +30,27 @@
    </ul>
  </nav>
  <main>
-   <section class="intro">
-     <div class="intro-text">
-       <h1>WELCOME TO 10.SOF BRIGADE!</h1>
-       <p>
-         WE ARE AIRSOFT, LARP, MILSIM AND FILMMAKING STUDIO WITH AMBITIONS TO CREATE IMPRESIVE CONTENT.
-         <h6>BASED IN PRAGUE</h6>
-       </p>
-     </div>
-     <img src="imgs/seba_aim.webp" alt="Profile Picture" class="about-img">
-   </section>
+  <section class="intro">
+    <div class="intro-text">
+      <h1>WELCOME TO 10.SOF BRIGADE!</h1>
+      <p>
+        WE ARE AIRSOFT, LARP, MILSIM AND FILMMAKING STUDIO WITH AMBITIONS TO CREATE IMPRESIVE CONTENT.
+        <h6>BASED IN PRAGUE</h6>
+      </p>
+    </div>
+    <div class="intro-slideshow">
+      <img src="imgs/ME-FAR.webp" alt="Profile Picture 1" class="slide">
+      <img src="imgs/ME-CLOSE.webp" alt="Profile Picture 2" class="slide">
+      <img src="imgs/SEBA_RELOAD.webp" alt="Profile Picture 3" class="slide">
+      <img src="imgs/ONDRA.webp" alt="Profile Picture 4" class="slide">
+      <div class="intro-dots">
+        <span class="dot" onclick="currentSlide(0)"></span>
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+      </div>
+    </div>
+  </section>
    <!-- <section class="events">
      <h2>Upcoming Events</h2>
      <p></p>
@@ -91,36 +102,70 @@
       </div>
  </footer>
  <script>
-let slideIndex = 1;
-showSlides(slideIndex);
-
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  let i;
-  let slides = document.querySelectorAll('.slideshow img');
-  let dots = document.querySelectorAll('.dot');
+  // Intro Slideshow
+  let introSlideIndex = 0;
   
-  if (n > slides.length) {
-    slideIndex = 1;
-  }
-  if (n < 1) {
-    slideIndex = slides.length;
+  function showIntroSlides(n) {
+    let slides = document.querySelectorAll('.intro-slideshow .slide');
+    let dots = document.querySelectorAll('.intro-dots .dot');
+    
+    if (n >= slides.length) { introSlideIndex = 0 }
+    if (n < 0) { introSlideIndex = slides.length - 1 }
+    
+    slides.forEach((slide) => slide.style.display = "none");
+    dots.forEach((dot) => dot.className = dot.className.replace(" active", ""));
+    
+    slides[introSlideIndex].style.display = "block";
+    dots[introSlideIndex].className += " active";
   }
   
-  slides.forEach((slide) => {
-    slide.style.display = "none";
-  });
+  function currentIntroSlide(n) {
+    introSlideIndex = n;
+    showIntroSlides(introSlideIndex);
+  }
   
-  dots.forEach((dot) => {
-    dot.className = dot.className.replace(" active", "");
-  });
+  function autoIntroSlides() {
+    introSlideIndex++;
+    showIntroSlides(introSlideIndex);
+    setTimeout(autoIntroSlides, 4000); // Change image every 4 seconds
+  }
   
-  slides[slideIndex - 1].style.display = "block";
-  dots[slideIndex - 1].className += " active";
-}
- </script>
+  //Top Slideshow
+  let topSlideIndex = 0;
+  
+  function showTopSlides(n) {
+    let slides = document.querySelectorAll('.slideshow img');
+    let dots = document.querySelectorAll('.dots .dot');
+    
+    if (n >= slides.length) { topSlideIndex = 0 }
+    if (n < 0) { topSlideIndex = slides.length - 1 }
+    
+    slides.forEach((slide) => slide.style.display = "none");
+    dots.forEach((dot) => dot.className = dot.className.replace(" active", ""));
+    
+    slides[topSlideIndex].style.display = "block";
+    dots[topSlideIndex].className += " active";
+  }
+  
+  function currentTopSlide(n) {
+    topSlideIndex = n;
+    showTopSlides(topSlideIndex);
+  }
+  
+  function autoTopSlides() {
+    topSlideIndex++;
+    showTopSlides(topSlideIndex);
+    setTimeout(autoTopSlides, 4000); // Change image every 4 seconds
+  }
+  
+  // Initial display
+  showIntroSlides(introSlideIndex);
+  autoIntroSlides();
+  
+  showTopSlides(topSlideIndex);
+  autoTopSlides();
+  </script>
+
+  <script type="module" src="/main.js"></script>
 </body>
 </html>
