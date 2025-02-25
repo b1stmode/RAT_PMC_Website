@@ -1,3 +1,4 @@
+// SLIDESHOWS
 let slideIndex = 0;
 
 function showSlides() {
@@ -29,3 +30,5 @@ function currentSlide(n) {
   slideIndex = n - 1;
   showSlides();
 }
+
+// CONTACT US
