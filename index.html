@@ -11,11 +11,11 @@
 <body>
  <header>
    <div class="slideshow">
-     <img src="imgs/3GUYS_TEST.jpg" alt="Slideshow 1">
+     <img src="imgs/RAT_SOF_FLAG.jpg" alt="Slideshow 1">
      <img src="imgs/NATO_NOWATER.jpg" alt="Slideshow 2">
      <div class="dots">
+       <span class="dot" onclick="currentSlide(0)"></span>
        <span class="dot" onclick="currentSlide(1)"></span>
-       <span class="dot" onclick="currentSlide(2)"></span>
      </div>
    </div>
  </header>
@@ -24,7 +24,7 @@
      <!-- <li>EVENTS</li> -->
      <li>
        <!-- Image for the logo -->
-       <img src="imgs/LOGO_TRANSPARENT.png" alt="10.SOF Brigade Logo" class="logo">
+       <img src="imgs/RAT_TRANSPARENT_TEXT.png" alt="10.SOF Brigade Logo" class="logo">
      </li>
      <!-- <li>JOIN US</li> -->
    </ul>
@@ -32,20 +32,21 @@
  <main>
   <section class="intro">
     <div class="intro-text">
-      <h1>WELCOME TO 10.SOF BRIGADE!</h1>
+      <section class="intro-main">
+        <h1>Recon & Assault Team PMC</h1>
+      </section>
       <p>
-        WE ARE AIRSOFT, LARP, MILSIM AND FILMMAKING STUDIO WITH AMBITIONS TO CREATE IMPRESIVE CONTENT.
+        WE ARE A PMC-LIKE AIRSOFT, LARP/MILSIM GROUP THAT OPERATES ALL ACROS CZECH REPUBLIC!
         <h6>BASED IN PRAGUE</h6>
       </p>
     </div>
     <div class="intro-slideshow">
-      <img src="imgs/ME-FAR.webp" alt="Profile Picture 1" class="slide">
-      <img src="imgs/ME-CLOSE.webp" alt="Profile Picture 2" class="slide">
-      <img src="imgs/SEBA_RELOAD.webp" alt="Profile Picture 3" class="slide">
-      <img src="imgs/ONDRA.webp" alt="Profile Picture 4" class="slide">
-      <img src="imgs/SEBA_GOING.jpg" alt="Profile Picture 5" class="slide">
-      <img src="imgs/SEBA_AIMING.jpg" alt="Profile Picture 6" class="slide">
-      <img src="imgs/ME_BEHIND.jpg" alt="Profile Picture 7" class="slide">
+      <img src="imgs/ME_CLIFF_LOOK.jpg" alt="Profile Picture 1" class="slide">
+      <img src="imgs/SEBA_AIM_BACK.jpg" alt="Profile Picture 2" class="slide">
+      <img src="imgs/WHITCHER_MG.jpg" alt="Profile Picture 3" class="slide">
+      <img src="imgs/ME_CQB.jpg" alt="Profile Picture 4" class="slide">
+      <img src="imgs/SEBA_LOOK_UP.jpg" alt="Profile Picture 5" class="slide">
+      <img src="imgs/WHITCHER_TRENCH.jpg" alt="Profile Picture 6" class="slide">
       <div class="intro-dots">
         <span class="dot" onclick="currentSlide(0)"></span>
         <span class="dot" onclick="currentSlide(1)"></span>
@@ -53,7 +54,6 @@
         <span class="dot" onclick="currentSlide(3)"></span>
         <span class="dot" onclick="currentSlide(4)"></span>
         <span class="dot" onclick="currentSlide(5)"></span>
-        <span class="dot" onclick="currentSlide(6)"></span>
       </div>
     </div>
   </section>
@@ -96,7 +96,7 @@
  <footer>
     <div class="footer-content">
         <div class="copyright">
-          &copy; 2025, 10.SOF Brigade
+          &copy; 2025, RAT PMC
         </div>
         <div class="social-media">
           <ul>
@@ -134,7 +134,7 @@
   function autoIntroSlides() {
     introSlideIndex++;
     showIntroSlides(introSlideIndex);
-    setTimeout(autoIntroSlides, 4000); // Change image every 4 seconds
+    setTimeout(autoIntroSlides, 2500); // Change image every 2.5 seconds
   }
   
   //Top Slideshow
@@ -162,7 +162,7 @@
   function autoTopSlides() {
     topSlideIndex++;
     showTopSlides(topSlideIndex);
-    setTimeout(autoTopSlides, 4000); // Change image every 4 seconds
+    setTimeout(autoTopSlides, 1500); // Change image every 1.5 seconds
   }
   
   // Initial display

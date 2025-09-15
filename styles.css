@@ -75,8 +75,8 @@ header {
   
   .intro-slideshow .slide {
     display: none;
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    height: 90%;
     object-fit: cover;
     object-position: center;
   }
@@ -131,11 +131,11 @@ nav ul {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #4A4B2F;
+    background-color: #1d1d1d;
   }
   
   nav ul li {
-    padding: 9px 9px;
+    padding: -1px -10px;
     color: #95ab57;
     font-size: 3Vw;
   }
@@ -148,7 +148,11 @@ nav ul {
 
 main {
 
-    background-color: #292818;
+    background-color: #232323;
+}
+
+.intro-main{
+  color: #bbb;
 }
 
 .intro {
@@ -158,7 +162,7 @@ main {
     text-align: left;
     padding: 40px;
 
-    background-color: #292818;
+    background-color: #232323;
 }
 
 .intro-text {
@@ -169,7 +173,7 @@ main {
     text-transform: uppercase;
     max-width: 1280px;
     margin: 0 auto;
-    color: #6F7A51;
+    color: #7a7a7a;
 }
 
 
@@ -243,8 +247,8 @@ h2 {
 }
 
 .join-us {
-    background-color: #292818;
-    color: #6F7A51;
+    background-color: #232323;
+    color: #7a7a7a;
     text-align: center;
     padding: 50px;
     margin: -10px;
@@ -261,9 +265,9 @@ h2 {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
-    border: 1px solid #4A4B2F;
+    border: 1px solid #696969;
     background-color: transparent;
-    color: #95ab57;
+    color: #7a7a7a;
     font-size: 18px;
     border-radius: 7px;
     box-sizing: border-box; /* Include padding/border in width calculation */
@@ -272,8 +276,8 @@ h2 {
   .join-us button {
     width: 100%; /* Ensures button occupies full form width */
     padding: 10px;
-    background-color: #4A4B2F;
-    color: #95ab57;
+    background-color: #464646;
+    color: #7a7a7a;
     font-size: 18px;
     border: none;
     cursor: pointer;
@@ -283,11 +287,11 @@ h2 {
   }
   
   .join-us button:hover {
-    background-color: #364022;
+    background-color: #343434;
   }
 
 footer {
-    background-color: #4A4B2F;
+    background-color: #1d1d1d;
     padding: 10px 20px; /* Adding some padding */
     color: white;
     display: flex;
@@ -327,5 +331,5 @@ footer {
   }
   
   footer .social-media ul li a:hover {
-    color: #95ab57;
+    color: #717171;
   }
