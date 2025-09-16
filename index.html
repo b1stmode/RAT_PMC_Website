@@ -14,8 +14,8 @@
      <img src="imgs/RAT_SOF_FLAG.jpg" alt="Slideshow 1">
      <img src="imgs/NATO_NOWATER.jpg" alt="Slideshow 2">
      <div class="dots">
-       <span class="dot" onclick="currentSlide(0)"></span>
-       <span class="dot" onclick="currentSlide(1)"></span>
+       <span class="dot" onclick="currentTopSlide(0)"></span>
+       <span class="dot" onclick="currentTopSlide(1)"></span>
      </div>
    </div>
  </header>
@@ -48,12 +48,12 @@
       <img src="imgs/SEBA_LOOK_UP.jpg" alt="Profile Picture 5" class="slide">
       <img src="imgs/WHITCHER_TRENCH.jpg" alt="Profile Picture 6" class="slide">
       <div class="intro-dots">
-        <span class="dot" onclick="currentSlide(0)"></span>
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
-        <span class="dot" onclick="currentSlide(4)"></span>
-        <span class="dot" onclick="currentSlide(5)"></span>
+        <span class="dot" onclick="currentIntroSlide(0)"></span>
+        <span class="dot" onclick="currentIntroSlide(1)"></span>
+        <span class="dot" onclick="currentIntroSlide(2)"></span>
+        <span class="dot" onclick="currentIntroSlide(3)"></span>
+        <span class="dot" onclick="currentIntroSlide(4)"></span>
+        <span class="dot" onclick="currentIntroSlide(5)"></span>
       </div>
     </div>
   </section>
@@ -134,7 +134,7 @@
   function autoIntroSlides() {
     introSlideIndex++;
     showIntroSlides(introSlideIndex);
-    setTimeout(autoIntroSlides, 2500); // Change image every 2.5 seconds
+    setTimeout(autoIntroSlides, 5000); // Change image every 2.5 seconds
   }
   
   //Top Slideshow
@@ -162,7 +162,7 @@
   function autoTopSlides() {
     topSlideIndex++;
     showTopSlides(topSlideIndex);
-    setTimeout(autoTopSlides, 1500); // Change image every 1.5 seconds
+    setTimeout(autoTopSlides, 5000); // Change image every 1.5 seconds
   }
   
   // Initial display
@@ -172,7 +172,5 @@
   showTopSlides(topSlideIndex);
   autoTopSlides();
   </script>
-
-  <script type="module" src="/main.js"></script>
 </body>
 </html>
