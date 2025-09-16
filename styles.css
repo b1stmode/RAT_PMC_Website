@@ -11,23 +11,25 @@ body {
 
 header {
     text-align: center;
-    color: white
+    color: white;
 }
 
 .slideshow {
-    position: relative;
-    width: 100%;
-    height: 90vh; /* Adjust height if necessary for your design */
-    overflow: hidden;
-  }
+  position: relative;
+  width: 100%;
+  max-height: 90vh; /* Keeps the height consistent */
+  overflow: hidden;
+}
 
 .slideshow img {
-    width: 100%;
-    height: 100vh;
-    object-fit: cover; /* Maintains aspect ratio and fills the slider */
-    object-position: center; /* Centers the image within the slider */
-    display: none;
-  }
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures images cover the area while maintaining aspect ratio */
+  object-position: center; /* Centers the image */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
   
   .slideshow img:first-child {
     display: block;
@@ -60,6 +62,68 @@ header {
     background-color: #ccc;
   }
 
+  .intro-slideshow {
+    position: relative;
+    width: 100%;
+    height: 75vh; /* Adjust height for larger image display */
+    overflow: hidden;
+    margin: 20px 0px 0px 50px;
+    border-radius: 10px;
+    min-width: 50%;
+    height: auto; /* Adjust margin to use full width */
+  }
+  
+  .intro-slideshow .slide {
+    display: none;
+    width: 90%;
+    height: 90%;
+    object-fit: cover;
+    object-position: center;
+  }
+  
+  @media (max-width: 1525px) and (min-width: 1024px) {
+    .intro-slideshow {
+      height: 70vh; /* Consistent height to maintain aspect ratio */
+    }
+  }
+  
+  @media (max-width: 1024px) and (min-width: 768px) {
+    .intro-slideshow {
+      height: 70vh;
+    }
+  }
+  @media (max-width: 768px) {
+    .intro-slideshow {
+      margin: 20px auto; /* Center the slideshow horizontally */
+    }
+  }
+  
+  .intro-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    padding: 10px 15px;
+    border-radius: 10px;
+  }
+  
+  .intro-dots .dot {
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .intro-dots .active,
+  .intro-dots .dot:hover {
+    background-color: #717171;
+  }
 nav ul {
     list-style-type: none;
     padding: 0;
@@ -67,11 +131,11 @@ nav ul {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #4A4B2F;
+    background-color: #1d1d1d;
   }
   
   nav ul li {
-    padding: 9px 9px;
+    padding: -1px -10px;
     color: #95ab57;
     font-size: 3Vw;
   }
@@ -84,7 +148,11 @@ nav ul {
 
 main {
 
-    background-color: #292818;
+    background-color: #232323;
+}
+
+.intro-main{
+  color: #bbb;
 }
 
 .intro {
@@ -92,8 +160,9 @@ main {
     flex-direction: column;
     align-items: center;
     text-align: left;
-    padding: 50px;
-    background-color: #292818;
+    padding: 40px;
+
+    background-color: #232323;
 }
 
 .intro-text {
@@ -104,14 +173,14 @@ main {
     text-transform: uppercase;
     max-width: 1280px;
     margin: 0 auto;
-    color: #6F7A51;
+    color: #7a7a7a;
 }
 
 
 .intro img {
     min-width: 50%;
     height: auto;
-    border-radius: 5px;
+    border-radius: 10px;
     margin-top: 20px;
 }
 
@@ -178,8 +247,8 @@ h2 {
 }
 
 .join-us {
-    background-color: #292818;
-    color: #6F7A51;
+    background-color: #232323;
+    color: #7a7a7a;
     text-align: center;
     padding: 50px;
     margin: -10px;
@@ -196,31 +265,33 @@ h2 {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
-    border: 1px solid #4A4B2F;
+    border: 1px solid #696969;
     background-color: transparent;
-    color: #95ab57;
+    color: #7a7a7a;
     font-size: 18px;
+    border-radius: 7px;
     box-sizing: border-box; /* Include padding/border in width calculation */
   }
   
   .join-us button {
     width: 100%; /* Ensures button occupies full form width */
     padding: 10px;
-    background-color: #4A4B2F;
-    color: #95ab57;
+    background-color: #464646;
+    color: #7a7a7a;
     font-size: 18px;
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    border-radius: 7px;
     box-sizing: border-box; /* Include padding/border in width calculation */
   }
   
   .join-us button:hover {
-    background-color: #364022;
+    background-color: #343434;
   }
 
 footer {
-    background-color: #4A4B2F;
+    background-color: #1d1d1d;
     padding: 10px 20px; /* Adding some padding */
     color: white;
     display: flex;
@@ -260,5 +331,5 @@ footer {
   }
   
   footer .social-media ul li a:hover {
-    color: #95ab57;
+    color: #717171;
   }
