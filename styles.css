@@ -134,21 +134,52 @@ nav ul {
     background-color: #1d1d1d;
   }
   
-  nav ul li {
-    padding: -1px -10px;
-    color: #95ab57;
-    font-size: 3Vw;
-  }
-  
   nav ul li img.logo {
-    max-height: 100px; /* Adjust the height as necessary */
-    margin: 0 20px; /* Space between the logo and text */
+    max-height: 60px; /* Adjust the height as necessary */
+    margin: 10px 20px; /* Space between the logo and text */
     vertical-align: middle;
   }
 
 main {
 
     background-color: #232323;
+}
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* centers logo */
+  list-style: none;
+  margin: 0;
+  padding: 10px 20px;
+}
+
+.side-links {
+  display: flex;
+  gap: 10px; /* space between links */
+}
+
+.side-links.left {
+  margin-right: 20px; /* optional small spacing from logo */
+}
+
+.side-links.right {
+  margin-left: 20px; /* optional small spacing from logo */
+}
+
+.nav-link a {
+  font-size: 1.5rem; /* smaller text */
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav-link a:hover {
+  text-decoration: underline;
+}
+
+.logo-container .logo {
+  height: 30px; /* bigger logo now */
 }
 
 .intro-main{
@@ -183,6 +214,8 @@ main {
     border-radius: 10px;
     margin-top: 20px;
 }
+
+
 
 @media (min-width: 768px) {
     .intro {
