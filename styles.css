@@ -18,6 +18,26 @@ header {
     color: white;
 }
 
+/* Homepage logo (looks balanced with slideshow above) */
+body.home nav ul li img.logo {
+  max-height: 50px; /* adjust until it looks ~11cm like you want */
+}
+
+/* Subpage logo (bigger so it doesn’t feel tiny) */
+body.subpage nav ul li img.logo {
+  max-height: 120px; /* adjust until it looks balanced */
+}
+
+/* Homepage */
+body.home nav ul {
+  padding: 10px 20px; /* keep it roomy since logo is smaller */
+}
+
+/* Subpages */
+body.subpage nav ul {
+  padding: 10px 20px;  /* less vertical padding so bar doesn’t get chunky */
+}
+
 .slideshow {
   position: relative;
   width: 100%;
@@ -128,21 +148,22 @@ header {
   .intro-dots .dot:hover {
     background-color: #717171;
   }
-nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+  nav ul {
     display: flex;
-    justify-content: center;
+    justify-content: center;   /* keeps everything centered */
     align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 10px 20px;
     background-color: #1d1d1d;
+    gap: 40px;   /* <-- space between each nav item */
   }
   
+  
   nav ul li img.logo {
-    max-height: 45px; /* Adjust the height as necessary */
-    margin: 10px 80px; /* Space between the logo and text */
+    max-height: 0px; /* Adjust the height as necessary */
+    margin: 10px 60px; /* Space between the logo and text */
     vertical-align: middle;
-    
   }
 
 main {
@@ -184,12 +205,6 @@ main {
 
 .nav-link a:hover {
   color: #b8b8b8;
-}
-
-.logo-container .logo {
-  height: 80px;   /* try 70–80px if you want it more dominant */
-  max-height: 90px;
-  width: auto;    /* keeps proportions correct */
 }
 
 .intro-main{
