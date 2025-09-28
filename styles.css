@@ -18,26 +18,11 @@ header {
     color: white;
 }
 
-/* Homepage logo (looks balanced with slideshow above) */
-body.home nav ul li img.logo {
-  max-height: 50px; /* adjust until it looks ~11cm like you want */
+body.subpage {
+  background-color: #232323; /* or your chosen dark color */
 }
-
-/* Subpage logo (bigger so it doesn’t feel tiny) */
-body.subpage nav ul li img.logo {
-  max-height: 120px; /* adjust until it looks balanced */
-}
-
 /* Homepage */
-body.home nav ul {
-  padding: 10px 20px; /* keep it roomy since logo is smaller */
-}
-
-/* Subpages */
-body.subpage nav ul {
-  padding: 10px 20px;  /* less vertical padding so bar doesn’t get chunky */
-}
-
+nav ul { padding: 10px 20px; }
 .slideshow {
   position: relative;
   width: 100%;
@@ -171,6 +156,7 @@ main {
     background-color: #232323;
 }
 
+
 .top-bar {
   display: flex;
   align-items: center;
@@ -208,7 +194,7 @@ main {
 }
 
 .intro-main{
-  color: #bbb;
+  color: #eee;
 }
 
 .intro {
@@ -229,7 +215,7 @@ main {
     text-transform: uppercase;
     max-width: 1280px;
     margin: 0 auto;
-    color: #7a7a7a;
+    color: #bbb;
 }
 
 
@@ -306,7 +292,7 @@ h2 {
 
 .join-us {
     background-color: #232323;
-    color: #7a7a7a;
+    color: #eee;
     text-align: center;
     padding: 50px;
     margin: -10px;
@@ -325,7 +311,7 @@ h2 {
     margin-bottom: 15px;
     border: 1px solid #696969;
     background-color: transparent;
-    color: #7a7a7a;
+    color: #bbb;
     font-size: 18px;
     border-radius: 7px;
     box-sizing: border-box; /* Include padding/border in width calculation */
@@ -335,7 +321,7 @@ h2 {
     width: 100%; /* Ensures button occupies full form width */
     padding: 10px;
     background-color: #464646;
-    color: #7a7a7a;
+    color: #bbb;
     font-size: 18px;
     border: none;
     cursor: pointer;
@@ -417,4 +403,156 @@ footer {
   width: 100%;
   border-radius: 10px;
   object-fit: cover;
+}
+
+.about-intro {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.about-intro h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.about-intro .tagline {
+  font-size: 1.2rem;
+  color: #aaa;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.about-path {
+  margin-bottom: 50px;
+}
+
+.about-path .timeline {
+  list-style: none;
+  padding: 0;
+}
+
+.about-path .timeline li {
+  margin: 10px 0;
+  color: #bbb;
+}
+
+.detachment {
+  display: flex;
+  align-items: center;
+  margin: 50px 0;
+  gap: 30px;
+}
+
+.detachment-text {
+  flex: 1;
+}
+
+.detachment-image {
+  flex: 1;
+}
+
+.detachment-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* alternate layout for even sections */
+.detachment:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+h2, h3 {
+  margin-bottom: 15px;
+}
+
+p {
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+
+.about-principles {
+  margin-bottom: 50px;
+}
+
+.about-principles ul {
+  list-style: square;
+  margin-left: 20px;
+  color: #bbb;
+}
+
+.about-join {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.about-join .join-button {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #464646;
+  color: #696969;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.about-join .join-button:hover {
+  background-color: #343434;
+  color: #696969;
+}
+
+.about-brigade {
+  text-align: center;
+  padding: 50px 20px;
+  background: #282828;
+  border-radius: 10px;
+  margin: 30px 0;
+}
+
+/* Detachment Section */
+.detachment {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin: 50px 0;
+  flex-wrap: wrap;
+  background: #282828;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.detachment-text {
+  flex: 1;
+  min-width: 250px;
+}
+
+.detachment-image {
+  flex: 1;
+  min-width: 250px;
+}
+
+.detachment-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* Alternate layout for even sections */
+.detachment:nth-of-type(even) {
+  flex-direction: row-reverse;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .detachment {
+    flex-direction: column;
+  }
+  .detachment:nth-of-type(even) {
+    flex-direction: column;
+  }
 }
