@@ -23,14 +23,14 @@ body.subpage {
 }
 /* Homepage */
 nav ul { padding: 10px 20px; }
-.slideshow {
+.top-img {
   position: relative;
   width: 100%;
   max-height: 90vh; /* Keeps the height consistent */
   overflow: hidden;
 }
 
-.slideshow img {
+.top-img img {
   width: 100%;
   height: 100%;
   object-fit: cover; /* Ensures images cover the area while maintaining aspect ratio */
@@ -39,87 +39,72 @@ nav ul { padding: 10px 20px; }
   margin-left: auto;
   margin-right: auto;
 }
-  
-  .slideshow img:first-child {
-    display: block;
-  }
 
-.dots {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+/* INTRO SECTION LAYOUT FIX */
+.intro {
     display: flex;
-    justify-content: center;
-    background-color: rgba(0, 0, 0, 0.5); /* Black with 50% opacity */
-    padding: 10px 15px; /* Add some padding to make space for the dots */
-    border-radius: 10px; /* Slight rounded corners */
-  }
-  
-  .dot {
-    height: 10px;
-    width: 10px;
-    margin: 0 5px;
-    background-color: #ffffff;
-    border-radius: 50%;
-    display: inline-block;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .active, .dot:hover {
-    background-color: #ccc;
-  }
+    flex-direction: row;          /* horizontal layout */
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px;
+    gap: 40px;                    /* space between text and slider */
+}
 
-  .intro-slideshow {
+.intro-text {
+    flex: 1;
+    max-width: 600px;             /* limits text width so it doesn’t dominate */
+}
+
+.intro-text h1 {
+    font-size: clamp(4rem, 10vw, 8rem); /* scales nicely across screens */
+}
+
+.intro-text p {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+  .nav-link {
+  color: #fff;           /* text color */
+  text-decoration: none; /* remove underline */
+  font-weight: 600;      /* optional, make it stand out */
+}
+
+.nav-link:hover {
+  color: #b8b8b8;           /* subtle hover effect */
+  cursor: pointer;
+}
+
+/* SLIDER FIX */
+.intro-slideshow {
+    flex: 1;
+    max-width: 600px;            /* keeps slider proportional to text */
+    height: auto;                /* scales naturally */
     position: relative;
+}
+
+.intro-slideshow .slide {
     width: 100%;
-    height: 75vh; /* Adjust height for larger image display */
-    overflow: hidden;
-    margin: 20px 0px 0px 50px;
-    border-radius: 10px;
-    min-width: 50%;
-    height: auto; /* Adjust margin to use full width */
-  }
-  
-  .intro-slideshow .slide {
-    display: none;
-    width: 90%;
-    height: 90%;
+    height: auto;
     object-fit: cover;
     object-position: center;
-  }
-  
-  @media (max-width: 1525px) and (min-width: 1024px) {
-    .intro-slideshow {
-      height: 70vh; /* Consistent height to maintain aspect ratio */
-    }
-  }
-  
-  @media (max-width: 1024px) and (min-width: 768px) {
-    .intro-slideshow {
-      height: 70vh;
-    }
-  }
-  @media (max-width: 768px) {
-    .intro-slideshow {
-      margin: 20px auto; /* Center the slideshow horizontally */
-    }
-  }
-  
-  .intro-dots {
+    border-radius: 10px;
+    display: block;              /* always show one at a time via JS */
+}
+
+/* SLIDER DOTS */
+.intro-dots {
     position: absolute;
-    bottom: 20px;
+    bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-    padding: 10px 15px;
+    background-color: rgba(0,0,0,0.5);
+    padding: 8px 12px;
     border-radius: 10px;
-  }
-  
-  .intro-dots .dot {
+}
+
+.intro-dots .dot {
     width: 10px;
     height: 10px;
     margin: 0 5px;
@@ -127,12 +112,29 @@ nav ul { padding: 10px 20px; }
     border-radius: 50%;
     cursor: pointer;
     transition: background-color 0.3s;
-  }
-  
-  .intro-dots .active,
-  .intro-dots .dot:hover {
+}
+
+.intro-dots .active,
+.intro-dots .dot:hover {
     background-color: #717171;
-  }
+}
+
+/* RESPONSIVE STACKING */
+@media (max-width: 768px) {
+    .intro {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .intro-text,
+    .intro-slideshow {
+        max-width: 90%;           /* leaves padding on sides */
+    }
+
+    .intro-slideshow {
+        margin-top: 20px;
+    }
+}
   nav ul {
     display: flex;
     justify-content: center;   /* keeps everything centered */
