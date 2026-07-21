@@ -9,108 +9,99 @@ body {
     overflow-x: hidden; /* Prevent horizontal scroll */
   }
 
+h1, h2, h3, nav, .join-button{
+  font-family: 'Quantico', sans-serif; 
+} 
+
 header {
     text-align: center;
     color: white;
 }
 
-.slideshow {
-  position: relative;
+body.subpage {
+  background-color: #232323; /* or your chosen dark color */
+}
+/* Homepage */
+nav ul { padding: 10px 20px; }
+.top-img {
   width: 100%;
-  max-height: 90vh; /* Keeps the height consistent */
+  height: 91vh; /* or 90vh if you want the nav visible */
   overflow: hidden;
 }
 
-.slideshow img {
+.top-img img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensures images cover the area while maintaining aspect ratio */
-  object-position: center; /* Centers the image */
+  object-fit: cover;      /* this is the magic */
+  object-position: center; /* keeps the important part centered */
   display: block;
-  margin-left: auto;
-  margin-right: auto;
 }
-  
-  .slideshow img:first-child {
-    display: block;
-  }
 
-.dots {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+/* INTRO SECTION LAYOUT FIX */
+.intro {
     display: flex;
-    justify-content: center;
-    background-color: rgba(0, 0, 0, 0.5); /* Black with 50% opacity */
-    padding: 10px 15px; /* Add some padding to make space for the dots */
-    border-radius: 10px; /* Slight rounded corners */
-  }
-  
-  .dot {
-    height: 10px;
-    width: 10px;
-    margin: 0 5px;
-    background-color: #ffffff;
-    border-radius: 50%;
-    display: inline-block;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .active, .dot:hover {
-    background-color: #ccc;
-  }
+    flex-direction: row;          /* horizontal layout */
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px;
+    gap: 40px;                    /* space between text and slider */
+}
 
-  .intro-slideshow {
+.intro-text {
+    flex: 1;
+    max-width: 600px;             /* limits text width so it doesn’t dominate */
+}
+
+.intro-text h1 {
+    font-size: clamp(4rem, 10vw, 8rem); /* scales nicely across screens */
+}
+
+.intro-text p {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+  .nav-link {
+  color: #dddcdc;           /* text color */
+  text-decoration: none; /* remove underline */
+  font-weight: 600;      /* optional, make it stand out */
+}
+
+.nav-link:hover {
+  color: #b8b8b8;           /* subtle hover effect */
+  cursor: pointer;
+}
+
+/* SLIDER FIX */
+.intro-slideshow {
+    flex: 1;
+    max-width: 600px;            /* keeps slider proportional to text */
+    height: auto;                /* scales naturally */
     position: relative;
+}
+
+.intro-slideshow .slide {
     width: 100%;
-    height: 75vh; /* Adjust height for larger image display */
-    overflow: hidden;
-    margin: 20px 0px 0px 50px;
-    border-radius: 10px;
-    min-width: 50%;
-    height: auto; /* Adjust margin to use full width */
-  }
-  
-  .intro-slideshow .slide {
-    display: none;
-    width: 90%;
-    height: 90%;
+    height: auto;
     object-fit: cover;
     object-position: center;
-  }
-  
-  @media (max-width: 1525px) and (min-width: 1024px) {
-    .intro-slideshow {
-      height: 70vh; /* Consistent height to maintain aspect ratio */
-    }
-  }
-  
-  @media (max-width: 1024px) and (min-width: 768px) {
-    .intro-slideshow {
-      height: 70vh;
-    }
-  }
-  @media (max-width: 768px) {
-    .intro-slideshow {
-      margin: 20px auto; /* Center the slideshow horizontally */
-    }
-  }
-  
-  .intro-dots {
+    border-radius: 10px;
+    display: block;              /* always show one at a time via JS */
+}
+
+/* SLIDER DOTS */
+.intro-dots {
     position: absolute;
-    bottom: 20px;
+    bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-    padding: 10px 15px;
+    background-color: rgba(0,0,0,0.5);
+    padding: 8px 12px;
     border-radius: 10px;
-  }
-  
-  .intro-dots .dot {
+}
+
+.intro-dots .dot {
     width: 10px;
     height: 10px;
     margin: 0 5px;
@@ -118,31 +109,44 @@ header {
     border-radius: 50%;
     cursor: pointer;
     transition: background-color 0.3s;
-  }
-  
-  .intro-dots .active,
-  .intro-dots .dot:hover {
+}
+
+.intro-dots .active,
+.intro-dots .dot:hover {
     background-color: #717171;
-  }
-nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+}
+
+/* RESPONSIVE STACKING */
+@media (max-width: 768px) {
+    .intro {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .intro-text,
+    .intro-slideshow {
+        max-width: 90%;           /* leaves padding on sides */
+    }
+
+    .intro-slideshow {
+        margin-top: 20px;
+    }
+}
+  nav ul {
     display: flex;
-    justify-content: center;
+    justify-content: center;   /* keeps everything centered */
     align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 10px 20px;
     background-color: #1d1d1d;
+    gap: 40px;   /* <-- space between each nav item */
   }
   
-  nav ul li {
-    padding: -1px -10px;
-    color: #95ab57;
-    font-size: 3Vw;
-  }
   
   nav ul li img.logo {
-    max-height: 100px; /* Adjust the height as necessary */
-    margin: 0 20px; /* Space between the logo and text */
+    max-height: 0px; /* Adjust the height as necessary */
+    margin: 10px 60px; /* Space between the logo and text */
     vertical-align: middle;
   }
 
@@ -151,8 +155,45 @@ main {
     background-color: #232323;
 }
 
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* centers logo */
+  list-style: none;
+  margin: 0;
+  padding: 10px 20px;
+}
+
+.side-links {
+  display: flex;
+  gap: 20px; /* space between links */
+}
+
+.side-links.left {
+  margin-right: 100px; /* optional small spacing from logo */
+}
+
+.side-links.right {
+  margin-left: 100px; /* optional small spacing from logo */
+}
+
+.nav-link a {
+  font-family: Quantico,sans-serif;
+  font-size: 1.5rem; /* smaller text */
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.nav-link a:hover {
+  color: #b8b8b8;
+}
+
 .intro-main{
-  color: #bbb;
+  color: #eee;
 }
 
 .intro {
@@ -173,7 +214,7 @@ main {
     text-transform: uppercase;
     max-width: 1280px;
     margin: 0 auto;
-    color: #7a7a7a;
+    color: #bbb;
 }
 
 
@@ -183,6 +224,8 @@ main {
     border-radius: 10px;
     margin-top: 20px;
 }
+
+
 
 @media (min-width: 768px) {
     .intro {
@@ -248,7 +291,7 @@ h2 {
 
 .join-us {
     background-color: #232323;
-    color: #7a7a7a;
+    color: #eee;
     text-align: center;
     padding: 50px;
     margin: -10px;
@@ -267,7 +310,7 @@ h2 {
     margin-bottom: 15px;
     border: 1px solid #696969;
     background-color: transparent;
-    color: #7a7a7a;
+    color: #bbb;
     font-size: 18px;
     border-radius: 7px;
     box-sizing: border-box; /* Include padding/border in width calculation */
@@ -277,7 +320,7 @@ h2 {
     width: 100%; /* Ensures button occupies full form width */
     padding: 10px;
     background-color: #464646;
-    color: #7a7a7a;
+    color: #bbb;
     font-size: 18px;
     border: none;
     cursor: pointer;
@@ -333,3 +376,168 @@ footer {
   footer .social-media ul li a:hover {
     color: #717171;
   }
+
+/* OTHER PAGES */
+
+.page-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  color: #eee;
+  font-family: 'Quantico', sans-serif;
+}
+
+.page-content h1, .page-content h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+
+  @media (max-width: 900px) {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 500px) {
+  grid-template-columns: 1fr;
+}
+}
+
+.gallery-grid img {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+
+.about-intro {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.about-intro h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.about-intro .tagline {
+  font-size: 1.2rem;
+  color: #aaa;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.about-path {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.about-path .timeline {
+  list-style: none;
+  text-align: center;
+  padding: 0;
+}
+
+.about-path .timeline li {
+  margin: 10px 0;
+  color: #bbb;
+}
+
+h2, h3 {
+  margin-bottom: 15px;
+}
+
+p {
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+
+.about-principles {
+  margin-bottom: 50px;
+}
+
+.about-principles ul {
+  list-style: square;
+  margin-left: 20px;
+  color: #bbb;
+}
+
+.about-join {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.about-join .join-button {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #464646;
+  color: #696969;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.about-join .join-button:hover {
+  background-color: #343434;
+  color: #696969;
+}
+
+.about-brigade {
+  text-align: center;
+  padding: 50px 20px;
+  background: #282828;
+  border-radius: 10px;
+  margin: 30px 0;
+}
+
+/* Detachment Section */
+.detachment {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin: 50px 0;
+  flex-wrap: wrap;
+  background: #282828;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.detachment-text {
+  flex: 1;
+  min-width: 250px;
+}
+
+.detachment-image {
+  flex: 1;
+  min-width: 250px;
+}
+
+.detachment-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* Alternate layout for even sections */
+.detachment:nth-of-type(even) {
+  flex-direction: row-reverse;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .detachment {
+    flex-direction: column;
+  }
+  .detachment:nth-of-type(even) {
+    flex-direction: column;
+  }
+}
+
+
