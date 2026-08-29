@@ -11,92 +11,106 @@
     <link href="https://fonts.googleapis.com/css2?family=Quantico:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body class="home">
- <header>
-   <div class="top-img">
-     <img src="imgs/Us_Aim_back.jpg" alt="top-image">
+ <nav class="topbar" aria-label="Primary">
+   <div class="topbar__inner">
+     <a class="topbar__mark" href="index.html">RAT&nbsp;PMC</a>
+     <div class="topbar__links">
+       <a href="index.html" aria-current="page">Home</a>
+       <a href="about.html">About</a>
+       <a href="gallery.html">Gallery</a>
+     </div>
+   </div>
+ </nav>
+ <header class="hero">
+   <picture class="hero__media">
+     <source media="(max-width: 640px)" srcset="imgs/hero-portrait.jpg">
+     <img src="imgs/hero-wide.jpg" alt="Two RAT PMC members on a training range, treeline behind">
+   </picture>
+   <div class="hero__inner">
+     <p class="eyebrow">Czech Republic</p>
+     <h1>Recon &amp; Assault Team PMC</h1>
+     <p class="hero__lede">A Czech-based team and community focused on training, teamwork, and continuous improvement.</p>
+     <a class="btn" href="about.html">About Us</a>
    </div>
  </header>
- <nav>
-   <ul class="top-bar">
-     <!-- Left side links -->
-     <li class="nav-link"><a href="about.html">About Us</a></li>
-     <!-- Right side link -->
-     <li class="nav-link"><a href="gallery.html">Gallery</a></li>
-   </ul>
- </nav>
  <main>
-  <section class="intro">
-    <div class="intro-text">
-<section class="intro-main">
-  <h1>Recon & Assault Team PMC</h1>
-  <p>A Czech-based team and community focused on training, teamwork, and continuous improvement.</p>
-  <p>Find out more: <a href="about.html" class="nav-link">About Us</a></p>
-</section>
-
-    </div>
+  <section class="field">
+    <p class="eyebrow">From the field</p>
     <div class="intro-slideshow">
-      <img src="imgs/ME_CLIFF_LOOK.jpg" alt="Profile Picture 1" class="slide">
-      <img src="imgs/SEBA_AIM_BACK.jpg" alt="Profile Picture 2" class="slide">
-      <img src="imgs/ME_CQB.jpg" alt="Profile Picture 3" class="slide">
-      <img src="imgs/radon_popelka_stand_stay_lethal.jpg" alt="Profile Picture 4" class="slide">
-      <img src="imgs/whitcher_quarry_stay_lethal_fix.jpg" alt="Profile Picture 5" class="slide">
-      <div class="intro-dots">
-        <span class="dot" onclick="currentIntroSlide(0)"></span>
-        <span class="dot" onclick="currentIntroSlide(1)"></span>
-        <span class="dot" onclick="currentIntroSlide(2)"></span>
-        <span class="dot" onclick="currentIntroSlide(3)"></span>
-        <span class="dot" onclick="currentIntroSlide(4)"></span>
+      <img src="imgs/ME_CLIFF_LOOK.jpg" alt="" class="slide">
+      <img src="imgs/SEBA_AIM_BACK.jpg" alt="" class="slide">
+      <img src="imgs/ME_CQB.jpg" alt="" class="slide">
+      <img src="imgs/radon_popelka_stand_stay_lethal.jpg" alt="" class="slide">
+      <img src="imgs/whitcher_quarry_stay_lethal_fix.jpg" alt="" class="slide">
+      <div class="intro-controls">
+        <button type="button" class="intro-pause" aria-label="Pause slideshow" aria-pressed="false" onclick="toggleIntroPause()"><i class="fas fa-pause" aria-hidden="true"></i></button>
+        <div class="intro-dots" role="group" aria-label="Choose image">
+          <button type="button" class="dot" aria-label="Image 1" onclick="currentIntroSlide(0)"></button>
+          <button type="button" class="dot" aria-label="Image 2" onclick="currentIntroSlide(1)"></button>
+          <button type="button" class="dot" aria-label="Image 3" onclick="currentIntroSlide(2)"></button>
+          <button type="button" class="dot" aria-label="Image 4" onclick="currentIntroSlide(3)"></button>
+          <button type="button" class="dot" aria-label="Image 5" onclick="currentIntroSlide(4)"></button>
+        </div>
       </div>
     </div>
   </section>
  </main>
- <footer>
-    <div class="footer-content">
-        <div class="copyright">
-          &copy; 2025, RAT PMC
-        </div>
-        <div class="social-media">
-          <ul>
-            <li><a href="https://www.instagram.com/rat.pmc/" target="_blank"><i class="fab fa-instagram"></i></a></li>
-            <li><a href="https://www.tiktok.com/@rat_pmc" target="_blank"><i class="fab fa-tiktok"></i></a></li>
-            <li><a href="https://www.youtube.com/@10_sof_brigade/shorts" target="_blank"><i class="fab fa-youtube"></i></a></li>
-            <li><a href="https://discord.gg/fWstPdaszW" target="_blank"><i class="fab fa-discord"></i></a></li>
-          </ul>
-        </div>
-      </div>
+ <footer class="site-footer">
+   <div class="site-footer__inner">
+     <span class="site-footer__copy">&copy; 2025, RAT PMC</span>
+     <ul class="site-footer__social">
+       <li><a href="https://www.instagram.com/rat.pmc/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+       <li><a href="https://www.tiktok.com/@rat_pmc" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a></li>
+       <li><a href="https://www.youtube.com/@10_sof_brigade/shorts" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a></li>
+       <li><a href="https://discord.gg/fWstPdaszW" target="_blank" rel="noopener" aria-label="Discord"><i class="fab fa-discord"></i></a></li>
+     </ul>
+   </div>
  </footer>
  <script>
-  // Intro Slideshow
-  let introSlideIndex = 0;
-  
+  // Intro slideshow --------------------------------------
+  var introSlideIndex = 0;
+  var introPaused = false;
+  var introReduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   function showIntroSlides(n) {
-    let slides = document.querySelectorAll('.intro-slideshow .slide');
-    let dots = document.querySelectorAll('.intro-dots .dot');
-    
-    if (n >= slides.length) { introSlideIndex = 0 }
-    if (n < 0) { introSlideIndex = slides.length - 1 }
-    
-    slides.forEach((slide) => slide.style.display = "none");
-    dots.forEach((dot) => dot.className = dot.className.replace(" active", ""));
-    
-    slides[introSlideIndex].style.display = "block";
-    dots[introSlideIndex].className += " active";
+    var slides = document.querySelectorAll('.intro-slideshow .slide');
+    var dots = document.querySelectorAll('.intro-dots .dot');
+    if (n >= slides.length) { introSlideIndex = 0; }
+    if (n < 0) { introSlideIndex = slides.length - 1; }
+    slides.forEach(function (s) { s.style.display = 'none'; });
+    dots.forEach(function (d) { d.classList.remove('active'); d.removeAttribute('aria-current'); });
+    slides[introSlideIndex].style.display = 'block';
+    if (dots[introSlideIndex]) {
+      dots[introSlideIndex].classList.add('active');
+      dots[introSlideIndex].setAttribute('aria-current', 'true');
+    }
   }
-  
+
   function currentIntroSlide(n) {
     introSlideIndex = n;
     showIntroSlides(introSlideIndex);
   }
-  
-  function autoIntroSlides() {
-    introSlideIndex++;
-    showIntroSlides(introSlideIndex);
-    setTimeout(autoIntroSlides, 5000); // Change image every 5 seconds
+
+  function toggleIntroPause() {
+    introPaused = !introPaused;
+    var btn = document.querySelector('.intro-pause');
+    btn.querySelector('i').className = introPaused ? 'fas fa-play' : 'fas fa-pause';
+    btn.setAttribute('aria-label', introPaused ? 'Play slideshow' : 'Pause slideshow');
+    btn.setAttribute('aria-pressed', String(introPaused));
   }
 
-  // Initial display
-  showIntroSlides(introSlideIndex);
-  autoIntroSlides();
+  showIntroSlides(0);
+
+  if (introReduceMotion) {
+    toggleIntroPause(); // start paused; button shows "Play"
+  } else {
+    setInterval(function () {
+      if (!introPaused) {
+        introSlideIndex++;
+        showIntroSlides(introSlideIndex);
+      }
+    }, 5000);
+  }
   </script>
 </body>
 </html>
