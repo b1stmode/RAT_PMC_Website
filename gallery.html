@@ -29,44 +29,18 @@
     </nav>
 
     <!-- CONTENT -->
-    <main class="page-content">
-      <h1>Gallery</h1>
+    <main class="page-content gallery">
+      <header class="page-head">
+        <p class="eyebrow">Field archive</p>
+        <h1>Gallery</h1>
+      </header>
 
-      <h2 class="gallery-year">2026</h2>
-      <div class="gallery-grid">
-        <img src="imgs/whitcher_quarry_stay_lethal_fix.jpg" alt="Training 1" />
-        <img src="imgs/radon_popelka_stand_stay_lethal.jpg" alt="Training 2" />
-        <img src="imgs/me_nvg_line_left_stay_lethal_fix.jpg" alt="Training 4" />
-        <!-- add more as needed -->
-      </div>
+      <div class="gallery-filters" id="galleryFilters" role="group" aria-label="Filter by year" hidden></div>
 
-      <h2 class="gallery-year">2025</h2>
-      <div class="gallery-grid">
-        <img src="imgs/SEBA_LOOK_UP.jpg" alt="Training 1" />
-        <img src="imgs/ME_CLIFF_LOOK.jpg" alt="Training 2" />
-        <img src="imgs/Me_Teach_Low.jpg" alt="Training 3" />
-        <img src="imgs/Me_Teach_Ondra_Aim.jpg" alt="Training 4" />
-        <img src="imgs/ME_CQB.jpg" alt="Training 5" />
-        <img src="imgs/Whitcher_Trench_Aim_Better_Right.jpg" alt="Training 6" />
-        <!-- add more as needed -->
-      </div>
-
-      <h2 class="gallery-year">2024</h2>
-      <div class="gallery-grid">
-        <img src="imgs/Me_CloseUp_right.jpg" alt="Training 1" />
-        <img src="imgs/Seba_reload_right.jpg" alt="Training 2" />
-        <img src="imgs/Ondra_Back_right.jpg" alt="Training 3" />
-        <img src="imgs/Me_Far_Right.jpg" alt="Training 4" />
-        <img src="imgs/HYG_Right.jpg" alt="Training 5" />
-        <img src="imgs/SL_Right.jpg" alt="Training 6" />
-        <!-- add more as needed -->
-      </div>
-
-      <h2 class="gallery-year">2023</h2>
-      <div class="gallery-grid">
-        <img src="imgs/SSLBetter_Right.jpg" alt="Training 1" />
-        <img src="imgs/Me_Behind_Right.jpg" alt="Training 2" />
-        <!-- add more as needed -->
+      <div id="galleryMount">
+        <noscript>
+          <p class="gallery-fallback">The gallery needs JavaScript to load. Enable it to browse the archive.</p>
+        </noscript>
       </div>
     </main>
 
@@ -82,5 +56,51 @@
         </ul>
       </div>
     </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+      <p class="lightbox__counter" id="lightboxCounter" aria-hidden="true"></p>
+      <button class="lightbox__close" type="button" aria-label="Close viewer" data-lb="close">&times;</button>
+      <button class="lightbox__nav lightbox__nav--prev" type="button" aria-label="Previous photo" data-lb="prev">&#8249;</button>
+      <figure class="lightbox__figure">
+        <img class="lightbox__img" id="lightboxImg" alt="">
+        <figcaption class="lightbox__cap" id="lightboxCap" hidden></figcaption>
+      </figure>
+      <button class="lightbox__nav lightbox__nav--next" type="button" aria-label="Next photo" data-lb="next">&#8250;</button>
+    </div>
+
+    <!--
+      GALLERY DATA — add / remove / caption images by editing this list.
+      Each entry: { "src": "imgs/FILE.jpg", "year": 2026 }
+      Optional fields:
+        "caption"  short title shown under the tile and in the viewer
+        "location" e.g. "Quarry AO"        "unit" e.g. "Bravo Detachment"
+        "featured" true  -> wider (2-column) tile
+        "position" CSS object-position, e.g. "center 20%", to nudge the crop
+        "alt"      accessibility description (defaults to caption / generic)
+      Newest year is shown first automatically.
+    -->
+    <script type="application/json" id="galleryData">
+    [
+      { "src": "imgs/whitcher_quarry_stay_lethal_fix.jpg", "year": 2026 },
+      { "src": "imgs/radon_popelka_stand_stay_lethal.jpg", "year": 2026 },
+      { "src": "imgs/me_nvg_line_left_stay_lethal_fix.jpg", "year": 2026 },
+      { "src": "imgs/SEBA_LOOK_UP.jpg", "year": 2025 },
+      { "src": "imgs/ME_CLIFF_LOOK.jpg", "year": 2025 },
+      { "src": "imgs/Me_Teach_Low.jpg", "year": 2025 },
+      { "src": "imgs/Me_Teach_Ondra_Aim.jpg", "year": 2025 },
+      { "src": "imgs/ME_CQB.jpg", "year": 2025 },
+      { "src": "imgs/Whitcher_Trench_Aim_Better_Right.jpg", "year": 2025 },
+      { "src": "imgs/Me_CloseUp_right.jpg", "year": 2024 },
+      { "src": "imgs/Seba_reload_right.jpg", "year": 2024 },
+      { "src": "imgs/Ondra_Back_right.jpg", "year": 2024 },
+      { "src": "imgs/Me_Far_Right.jpg", "year": 2024 },
+      { "src": "imgs/HYG_Right.jpg", "year": 2024 },
+      { "src": "imgs/SL_Right.jpg", "year": 2024 },
+      { "src": "imgs/SSLBetter_Right.jpg", "year": 2023 },
+      { "src": "imgs/Me_Behind_Right.jpg", "year": 2023 }
+    ]
+    </script>
+    <script src="gallery.js" defer></script>
   </body>
 </html>
