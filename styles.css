@@ -1,543 +1,425 @@
-@import url('https://fonts.googleapis.com/css2?family=Pragati+Narrow:wght@700&display=swap');
+/* ============================================================
+   RAT PMC — stylesheet
+
+     1  Tokens
+     2  Base & reset
+     3  Typography
+     4  Navigation
+     5  Footer
+     6  Home — hero, intro, slideshow
+     7  Sub-page shell (.page-content)
+     8  Gallery
+     9  About
+    10  Utilities
+
+   Fonts load via <link> in each page <head>:
+   Quantico (display) · IBM Plex Sans (body) · IBM Plex Mono (labels)
+   ============================================================ */
+
+
+/* 1 — TOKENS ------------------------------------------------- */
+:root {
+  /* surfaces — charcoal, faint cool cast */
+  --bg:        #1c1d1e;
+  --bar:       #141516;
+  --surface:   #242628;
+  --surface-2: #2c2f31;
+  --line:      #3a3d40;
+
+  /* text ramp — no accent, contrast is carried here */
+  --text:      #ececec;
+  --text-dim:  #a6a8a9;
+  --text-mute: #6e7173;
+  --text-hi:   #ffffff;
+
+  /* type roles */
+  --ff-display: "Quantico", "Arial Narrow", system-ui, sans-serif;
+  --ff-body:    "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --ff-mono:    "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  --fs-h1: clamp(2rem, 4vw, 3rem);
+  --fs-h2: clamp(1.7rem, 3.2vw, 2.4rem);
+  --fs-h3: 1.0625rem;
+
+  /* spacing ladder — 8-based */
+  --s-1: 4px;  --s-2: 8px;  --s-3: 12px; --s-4: 16px; --s-5: 24px;
+  --s-6: 32px; --s-7: 48px; --s-8: 64px; --s-9: 96px;
+
+  --radius: 3px;
+  --maxw-page: 1000px;
+}
+
+
+/* 2 — BASE & RESET ----------------------------------------- */
+* { box-sizing: border-box; }
 
 body {
-    font-family: 'Pragati Narrow', sans-serif;
-    font-weight: 700;
-    font-style: normal;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden; /* Prevent horizontal scroll */
-  }
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text-dim);
+  font-family: var(--ff-body);
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.6;
+  overflow-x: hidden; /* crutch — to be removed in the responsive pass */
+  -webkit-font-smoothing: antialiased;
+}
 
-h1, h2, h3, nav, .join-button{
-  font-family: 'Quantico', sans-serif; 
-} 
+main { background: var(--bg); }
 
 header {
-    text-align: center;
-    color: white;
+  text-align: center;
+  color: var(--text);
 }
 
-body.subpage {
-  background-color: #232323; /* or your chosen dark color */
-}
-/* Homepage */
-nav ul { padding: 10px 20px; }
-.top-img {
-  width: 100%;
-  height: 91vh; /* or 90vh if you want the nav visible */
-  overflow: hidden;
-}
+img { max-width: 100%; }
 
-.top-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;      /* this is the magic */
-  object-position: center; /* keeps the important part centered */
-  display: block;
+
+/* 3 — TYPOGRAPHY ------------------------------------------- */
+h1, h2 {
+  font-family: var(--ff-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 0.95;
 }
 
-/* INTRO SECTION LAYOUT FIX */
-.intro {
-    display: flex;
-    flex-direction: row;          /* horizontal layout */
-    justify-content: space-between;
-    align-items: center;
-    padding: 40px;
-    gap: 40px;                    /* space between text and slider */
+h1 {
+  font-size: var(--fs-h1);
+  letter-spacing: 0.01em;
 }
 
-.intro-text {
-    flex: 1;
-    max-width: 600px;             /* limits text width so it doesn’t dominate */
+h2 {
+  font-size: var(--fs-h2);
+  letter-spacing: 0.01em;
+  text-align: center;
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
-.intro-text h1 {
-    font-size: clamp(4rem, 10vw, 8rem); /* scales nicely across screens */
+/* h3-level headings intentionally use the body sans at a heavy weight */
+h3 {
+  font-family: var(--ff-body);
+  font-weight: 600;
+  font-size: var(--fs-h3);
+  color: var(--text);
+  line-height: 1.3;
 }
 
-.intro-text p {
-    font-size: clamp(1.5rem, 3vw, 2.25rem);
+h2, h3 { margin-bottom: var(--s-3); }
+
+p {
+  line-height: 1.6;
+  margin-bottom: var(--s-4);
 }
 
-  .nav-link {
-  color: #dddcdc;           /* text color */
-  text-decoration: none; /* remove underline */
-  font-weight: 600;      /* optional, make it stand out */
+
+/* 4 — NAVIGATION ----------------------------------------- */
+nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: var(--s-3) var(--s-5);
+  background-color: var(--bar);
+  gap: var(--s-7);
 }
-
-.nav-link:hover {
-  color: #b8b8b8;           /* subtle hover effect */
-  cursor: pointer;
-}
-
-/* SLIDER FIX */
-.intro-slideshow {
-    flex: 1;
-    max-width: 600px;            /* keeps slider proportional to text */
-    height: auto;                /* scales naturally */
-    position: relative;
-}
-
-.intro-slideshow .slide {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 10px;
-    display: block;              /* always show one at a time via JS */
-}
-
-/* SLIDER DOTS */
-.intro-dots {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    justify-content: center;
-    background-color: rgba(0,0,0,0.5);
-    padding: 8px 12px;
-    border-radius: 10px;
-}
-
-.intro-dots .dot {
-    width: 10px;
-    height: 10px;
-    margin: 0 5px;
-    background-color: #bbb;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.intro-dots .active,
-.intro-dots .dot:hover {
-    background-color: #717171;
-}
-
-/* RESPONSIVE STACKING */
-@media (max-width: 768px) {
-    .intro {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .intro-text,
-    .intro-slideshow {
-        max-width: 90%;           /* leaves padding on sides */
-    }
-
-    .intro-slideshow {
-        margin-top: 20px;
-    }
-}
-  nav ul {
-    display: flex;
-    justify-content: center;   /* keeps everything centered */
-    align-items: center;
-    list-style: none;
-    margin: 0;
-    padding: 10px 20px;
-    background-color: #1d1d1d;
-    gap: 40px;   /* <-- space between each nav item */
-  }
-  
-  
-  nav ul li img.logo {
-    max-height: 0px; /* Adjust the height as necessary */
-    margin: 10px 60px; /* Space between the logo and text */
-    vertical-align: middle;
-  }
-
-main {
-
-    background-color: #232323;
-}
-
 
 .top-bar {
   display: flex;
   align-items: center;
-  justify-content: center; /* centers logo */
+  justify-content: center;
   list-style: none;
   margin: 0;
-  padding: 10px 20px;
+  padding: var(--s-3) var(--s-5);
 }
 
-.side-links {
-  display: flex;
-  gap: 20px; /* space between links */
+.nav-link {
+  color: var(--text-dim);
+  text-decoration: none;
+  font-weight: 600;
 }
-
-.side-links.left {
-  margin-right: 100px; /* optional small spacing from logo */
-}
-
-.side-links.right {
-  margin-left: 100px; /* optional small spacing from logo */
+.nav-link:hover {
+  color: var(--text-mute);
+  cursor: pointer;
 }
 
 .nav-link a {
-  font-family: Quantico,sans-serif;
-  font-size: 1.5rem; /* smaller text */
+  font-family: var(--ff-display);
+  font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: 1px;
-  color: #fff;
+  color: var(--text);
   text-decoration: none;
   text-transform: uppercase;
 }
+.nav-link a:hover { color: var(--text-dim); }
 
-.nav-link a:hover {
-  color: #b8b8b8;
+
+/* 5 — FOOTER --------------------------------------------- */
+footer {
+  background-color: var(--bar);
+  padding: var(--s-3) var(--s-5);
+  color: var(--text);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.intro-main{
-  color: #eee;
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+footer .copyright {
+  font-size: 1rem;
+  margin-top: var(--s-3);
+}
+
+footer .social-media ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--s-5);
+}
+footer .social-media ul li {
+  display: inline;
+  margin: 0;
+}
+
+footer .social-media ul li a {
+  color: var(--text);
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+footer .social-media ul li a:hover { color: var(--text-mute); }
+
+
+/* 6 — HOME: hero, intro, slideshow ---------------------- */
+.top-img {
+  width: 100%;
+  height: 91vh;
+  overflow: hidden;
+}
+.top-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
 .intro {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: left;
-    padding: 40px;
-
-    background-color: #232323;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  gap: var(--s-6);
+  padding: var(--s-7);
+  background-color: var(--bg);
+}
+@media (min-width: 768px) {
+  .intro { flex-direction: row; }
 }
 
 .intro-text {
-    font-size: 5vw;
-    font-weight: 700;
-    line-height: 0.9;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    max-width: 1280px;
-    margin: 0 auto;
-    color: #bbb;
-}
-
-
-.intro img {
-    min-width: 50%;
-    height: auto;
-    border-radius: 10px;
-    margin-top: 20px;
-}
-
-
-
-@media (min-width: 768px) {
-    .intro {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
-    .intro img {
-        width: 300px;
-        height: auto;
-        margin-left: 20px;
-        margin-top: 0;
-    }
-}
-
-h2 {
-    font-size: 7vw;
-    font-weight: 700;
-    line-height: 0.9;
-    letter-spacing: -0.04em;
-    text-transform: uppercase;
-    text-align: center;
-    max-width: 1280px;
-    margin: 0 auto;
-
-}
-
-.events {
-    text-align: center;
-    padding: 50px;
-    color: #6F7A51;
-}
-
-.event {
-
-    margin: 10px auto;
-
-    padding: 10px;
-
-    border-radius: 15px;
-
-    width: 80%;
-
-    max-width: 500px;
-
-    color: #6F7A51;
-
-    font-size: 14px; /* Smaller font size */
-
-    line-height: 1.2; /* Ensure readability */
-
-}
-
-
-.events h3 {
-
-    font-size: 16px; /* Reduced font size for headings */
-
-    margin: 5px 0; /* Smaller margins */
-    color: #95ab57;
-
-}
-
-.join-us {
-    background-color: #232323;
-    color: #eee;
-    text-align: center;
-    padding: 50px;
-    margin: -10px;
-  }
-  
-  .join-us form {
-    max-width: 100%; /* Let the form occupy full available width */
-    margin: 0 auto; /* Center the form horizontally */
-    padding: 0 10px; /* Uniform horizontal padding for consistency */
-    box-sizing: border-box; /* Include padding and border in element's total width/height */
-  }
-  
-  .join-us input, .join-us textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #696969;
-    background-color: transparent;
-    color: #bbb;
-    font-size: 18px;
-    border-radius: 7px;
-    box-sizing: border-box; /* Include padding/border in width calculation */
-  }
-  
-  .join-us button {
-    width: 100%; /* Ensures button occupies full form width */
-    padding: 10px;
-    background-color: #464646;
-    color: #bbb;
-    font-size: 18px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    border-radius: 7px;
-    box-sizing: border-box; /* Include padding/border in width calculation */
-  }
-  
-  .join-us button:hover {
-    background-color: #343434;
-  }
-
-footer {
-    background-color: #1d1d1d;
-    padding: 10px 20px; /* Adding some padding */
-    color: white;
-    display: flex;
-    justify-content: space-between; /* Space between copyright and social media */
-    align-items: center;
-  }
-  
-  .footer-content {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-  }
-  
-  footer .copyright {
-    font-size: 1rem; /* Adjust font size */
-    margin-top: 10px;
-  }
-  
-  footer .social-media ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: flex-end;
-    gap: 20px;
-  }
-  
-  footer .social-media ul li {
-    display: inline;
-    margin: 0;
-  }
-  
-  footer .social-media ul li a {
-    color: white;
-    font-size: 1.5rem;
-    transition: color 0.3s ease;
-  }
-  
-  footer .social-media ul li a:hover {
-    color: #717171;
-  }
-
-/* OTHER PAGES */
-
-.page-content {
-  max-width: 1000px;
+  flex: 1;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 40px 20px;
-  color: #eee;
-  font-family: 'Quantico', sans-serif;
+  font-size: 5vw;
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+.intro-text h1 { font-size: clamp(4rem, 10vw, 8rem); }
+.intro-text p  { font-size: clamp(1.5rem, 3vw, 2.25rem); }
+
+.intro-main { color: var(--text); }
+
+.intro-slideshow {
+  flex: 1;
+  max-width: 600px;
+  height: auto;
+  position: relative;
+}
+.intro-slideshow .slide {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+  border-radius: var(--radius);
+  display: block;
 }
 
-.page-content h1, .page-content h2 {
+.intro-dots {
+  position: absolute;
+  bottom: var(--s-3);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: var(--s-2) var(--s-3);
+  border-radius: var(--radius);
+}
+.intro-dots .dot {
+  width: 10px;
+  height: 10px;
+  margin: 0 var(--s-1);
+  background-color: var(--text-dim);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.intro-dots .active,
+.intro-dots .dot:hover { background-color: var(--text-mute); }
+
+@media (max-width: 768px) {
+  .intro { text-align: center; }
+  .intro-text,
+  .intro-slideshow { max-width: 90%; }
+  .intro-slideshow { margin-top: var(--s-5); }
+}
+
+
+/* 7 — SUB-PAGE SHELL ----------------------------------- */
+.page-content {
+  max-width: var(--maxw-page);
+  margin: 0 auto;
+  padding: var(--s-7) var(--s-5);
+  color: var(--text-dim);
+  font-family: var(--ff-body);
+}
+.page-content h1,
+.page-content h2 {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: var(--s-5);
 }
 
+
+/* 8 — GALLERY ----------------------------------------- */
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
+  gap: var(--s-4);
 
   @media (max-width: 900px) {
-  grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 500px) {
+    grid-template-columns: 1fr;
+  }
 }
-
-@media (max-width: 500px) {
-  grid-template-columns: 1fr;
-}
-}
-
 .gallery-grid img {
   width: 100%;
-  border-radius: 10px;
+  border-radius: var(--radius);
   object-fit: cover;
 }
 
+.gallery-year {
+  font-size: 1.8rem;
+  margin-top: var(--s-7);
+}
 
+
+/* 9 — ABOUT ------------------------------------------ */
 .about-intro {
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: var(--s-8);
 }
 
-.about-intro h1 {
-  font-size: 3rem;
-  margin-bottom: 10px;
-}
-
-.about-intro .tagline {
-  font-size: 1.2rem;
-  color: #aaa;
-  font-style: italic;
-  margin-bottom: 20px;
+.about-brigade {
+  text-align: center;
+  padding: var(--s-8) var(--s-5);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  margin: var(--s-6) 0;
 }
 
 .about-path {
-  margin-bottom: 50px;
+  margin-bottom: var(--s-8);
   text-align: center;
 }
-
 .about-path .timeline {
   list-style: none;
   text-align: center;
   padding: 0;
 }
-
 .about-path .timeline li {
-  margin: 10px 0;
-  color: #bbb;
-}
-
-h2, h3 {
-  margin-bottom: 15px;
-}
-
-p {
-  line-height: 1.6;
-  margin-bottom: 20px;
-}
-
-
-.about-principles {
-  margin-bottom: 50px;
-}
-
-.about-principles ul {
-  list-style: square;
-  margin-left: 20px;
-  color: #bbb;
+  margin: var(--s-3) 0;
+  color: var(--text-dim);
 }
 
 .about-join {
   text-align: center;
-  margin-top: 50px;
+  margin-top: var(--s-8);
 }
-
 .about-join .join-button {
   display: inline-block;
-  margin-top: 15px;
-  padding: 10px 20px;
-  background-color: #464646;
-  color: #696969;
+  margin-top: var(--s-4);
+  padding: var(--s-3) var(--s-5);
+  background-color: var(--surface-2);
+  color: var(--text);
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: var(--radius);
   transition: 0.3s;
 }
-
 .about-join .join-button:hover {
-  background-color: #343434;
-  color: #696969;
+  background-color: var(--surface);
+  color: var(--text);
 }
 
-.about-brigade {
-  text-align: center;
-  padding: 50px 20px;
-  background: #282828;
-  border-radius: 10px;
-  margin: 30px 0;
-}
-
-/* Detachment Section */
+/* Detachment rows */
 .detachment {
   display: flex;
   align-items: center;
-  gap: 30px;
-  margin: 50px 0;
+  gap: var(--s-6);
+  margin: var(--s-8) 0;
   flex-wrap: wrap;
-  background: #282828;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: var(--s-6);
+  border-radius: var(--radius);
 }
-
-.detachment-text {
-  flex: 1;
-  min-width: 250px;
-}
-
-.detachment-image {
-  flex: 1;
-  min-width: 250px;
-}
-
+.detachment-text  { flex: 1; min-width: 250px; }
+.detachment-image { flex: 1; min-width: 250px; }
 .detachment-image img {
   width: 100%;
   height: auto;
-  border-radius: 10px;
+  border-radius: var(--radius);
   object-fit: cover;
 }
 
-/* Alternate layout for even sections */
-.detachment:nth-of-type(even) {
-  flex-direction: row-reverse;
-}
+/* alternate the row direction — replaced by an explicit modifier in Stage 5 */
+.detachment:nth-of-type(even) { flex-direction: row-reverse; }
 
-/* Responsive */
 @media (max-width: 768px) {
-  .detachment {
-    flex-direction: column;
-  }
-  .detachment:nth-of-type(even) {
-    flex-direction: column;
-  }
+  .detachment,
+  .detachment:nth-of-type(even) { flex-direction: column; }
 }
 
 
+/* 10 — UTILITIES ----------------------------------- */
+:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

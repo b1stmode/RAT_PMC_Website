@@ -1,0 +1,22 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# Logs / temp
+*.log
+*.tmp
+tmp/
+
+# Image originals (keep large unoptimised source files out of the repo)
+imgs/_originals/
+imgs/**/*.psd
+imgs/**/*.CR2
+imgs/**/*.ARW
+imgs/**/*.NEF
