@@ -47,6 +47,7 @@
 
   --radius: 3px;
   --maxw-page: 1000px;
+  --maxw-shell: 1200px; /* wide shell — topbar / footer / hero lockup */
 }
 
 
@@ -62,7 +63,6 @@ body {
   font-weight: 400;
   font-style: normal;
   line-height: 1.6;
-  overflow-x: hidden; /* crutch — to be removed in the responsive pass */
   -webkit-font-smoothing: antialiased;
 }
 
@@ -70,7 +70,7 @@ main { background: var(--bg); }
 
 header { color: var(--text); }
 
-img { max-width: 100%; }
+img { max-width: 100%; height: auto; }
 
 
 /* 3 — TYPOGRAPHY ------------------------------------------- */
@@ -120,7 +120,7 @@ p {
   border-bottom: 1px solid var(--line);
 }
 .topbar__inner {
-  max-width: 1200px;
+  max-width: var(--maxw-shell);
   margin: 0 auto;
   min-height: 56px;
   padding: 0 var(--s-5);
@@ -201,7 +201,7 @@ p {
   border-top: 1px solid var(--line);
 }
 .site-footer__inner {
-  max-width: 1200px;
+  max-width: var(--maxw-shell);
   margin: 0 auto;
   padding: var(--s-5);
   display: flex;
@@ -267,7 +267,7 @@ p {
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 1200px;
+  max-width: var(--maxw-shell);
   margin: 0 auto;
   padding: var(--s-8) var(--s-6);
 }
@@ -571,6 +571,7 @@ p {
   .lightbox { padding: var(--s-3); }
   .lightbox__nav { width: 36px; height: 52px; }
   .lightbox__close { width: 36px; height: 36px; }
+  .tile--featured { grid-column: auto; } /* no wide tile on ~1-col layouts */
 }
 
 
