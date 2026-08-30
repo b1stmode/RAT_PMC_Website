@@ -16,6 +16,7 @@
     />
   </head>
   <body class="subpage">
+    <a class="skip-link" href="#content">Skip to content</a>
     <!-- NAV BAR -->
     <nav class="topbar" aria-label="Primary">
       <div class="topbar__inner">
@@ -29,7 +30,7 @@
     </nav>
 
     <!-- CONTENT -->
-    <main class="page-content gallery">
+    <main class="page-content gallery" id="content" tabindex="-1">
       <header class="page-head">
         <p class="eyebrow">Field archive</p>
         <h1>Gallery</h1>
@@ -49,10 +50,10 @@
       <div class="site-footer__inner">
         <span class="site-footer__copy">&copy; 2026, RAT PMC</span>
         <ul class="site-footer__social">
-          <li><a href="https://www.instagram.com/rat.pmc/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
-          <li><a href="https://www.tiktok.com/@rat_pmc" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a></li>
-          <li><a href="https://www.youtube.com/@10_sof_brigade/shorts" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a></li>
-          <li><a href="https://discord.gg/fWstPdaszW" target="_blank" rel="noopener" aria-label="Discord"><i class="fab fa-discord"></i></a></li>
+          <li><a href="https://www.instagram.com/rat.pmc/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+          <li><a href="https://www.tiktok.com/@rat_pmc" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok" aria-hidden="true"></i></a></li>
+          <li><a href="https://www.youtube.com/@10_sof_brigade/shorts" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a></li>
+          <li><a href="https://discord.gg/fWstPdaszW" target="_blank" rel="noopener" aria-label="Discord"><i class="fab fa-discord" aria-hidden="true"></i></a></li>
         </ul>
       </div>
     </footer>
@@ -67,6 +68,7 @@
         <figcaption class="lightbox__cap" id="lightboxCap" hidden></figcaption>
       </figure>
       <button class="lightbox__nav lightbox__nav--next" type="button" aria-label="Next photo" data-lb="next">&#8250;</button>
+      <p class="visually-hidden" id="lightboxStatus" aria-live="polite"></p>
     </div>
 
     <!--
@@ -83,18 +85,18 @@
     -->
     <script type="application/json" id="galleryData">
     [
-      { "src": "imgs/2026/cukrak_flag.jpg", "year": 2026 },
-      { "src": "imgs/2026/me_hug.jpg", "year": 2026 },
-      { "src": "imgs/2026/me_cover_low_ready.jpg", "year": 2026 },
-      { "src": "imgs/2026/radar_prone_rock.jpg", "year": 2026 },
-      { "src": "imgs/2026/ondra_lying.jpg", "year": 2026 },
-      { "src": "imgs/2026/darius_aim_walk.jpg", "year": 2026 },
-      { "src": "imgs/2026/radar_solo.jpg", "year": 2026 },
-      { "src": "imgs/2026/whitcher_peek.jpg", "year": 2026 },
-      { "src": "imgs/2026/likeminded.jpg", "year": 2026 },
-      { "src": "imgs/2026/me_nvg_line_left_stay_lethal_fix.jpg", "year": 2026 },
-      { "src": "imgs/2026/radon_popelka_stand_stay_lethal.jpg", "year": 2026 },
-      { "src": "imgs/2026/whitcher_quarry_stay_lethal_fix.jpg", "year": 2026 },
+      { "src": "imgs/2026/cukrak_flag.jpg", "year": 2026, "alt": "Two operators hold up a black unit flag in a sunny forest clearing, a radio tower behind" },
+      { "src": "imgs/2026/me_hug.jpg", "year": 2026, "alt": "Operator in flecktarn kneeling beside a torso target dummy propped in a chair" },
+      { "src": "imgs/2026/me_cover_low_ready.jpg", "year": 2026, "alt": "Operator in flecktarn kneeling at a wall in winter brush, rifle held low" },
+      { "src": "imgs/2026/radar_prone_rock.jpg", "year": 2026, "alt": "Operator prone on a mossy log with a large pack, aiming a scoped rifle into misty woods" },
+      { "src": "imgs/2026/ondra_lying.jpg", "year": 2026, "alt": "Operator prone on a rock aiming a scoped rifle, tall sunlit pines behind" },
+      { "src": "imgs/2026/darius_aim_walk.jpg", "year": 2026, "alt": "Operator in tan camo walking forward while aiming a rifle, a tent behind" },
+      { "src": "imgs/2026/radar_solo.jpg", "year": 2026, "alt": "Operator in a t-shirt and plate carrier with a rifle against a corrugated-metal wall at sunset" },
+      { "src": "imgs/2026/whitcher_peek.jpg", "year": 2026, "alt": "Operator in a ballcap leaning past timber cover to aim a red-dot rifle" },
+      { "src": "imgs/2026/likeminded.jpg", "year": 2026, "alt": "Two operators clasp forearms, one in a t-shirt and one in full kit and ghillie hood" },
+      { "src": "imgs/2026/me_nvg_line_left_stay_lethal_fix.jpg", "year": 2026, "alt": "Near-dark frame of an operator wearing a night-vision device" },
+      { "src": "imgs/2026/radon_popelka_stand_stay_lethal.jpg", "year": 2026, "alt": "Two operators standing in a field of pine saplings under an overcast sky" },
+      { "src": "imgs/2026/whitcher_quarry_stay_lethal_fix.jpg", "year": 2026, "alt": "Lone operator standing in a gravel quarry, treeline on the ridge behind" },
       { "src": "imgs/2025/SEBA_LOOK_UP.jpg", "year": 2025 },
       { "src": "imgs/2025/ME_CLIFF_LOOK.jpg", "year": 2025 },
       { "src": "imgs/2025/Me_Teach_Low.jpg", "year": 2025 },
