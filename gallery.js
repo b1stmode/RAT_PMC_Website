@@ -33,6 +33,14 @@
     return r.alt || r.caption ||
       ('RAT PMC training photo' + (r.year ? ', ' + r.year : ''));
   }
+  // Stage 9: photos ship as <picture> — a WebP srcset + a JPEG <img> fallback,
+  // all derived from the record's src (e.g. imgs/2026/foo.jpg -> imgs/2026/foo-512.webp).
+  function base(src) { return src.replace(/\.[^.]+$/, ''); }
+  function webpSet(src) {
+    var b = base(src);
+    return b + '-512.webp 512w, ' + b + '-768.webp 768w, ' + b + '-1080.webp 1080w';
+  }
+  var TILE_SIZES = '(max-width: 700px) calc(100vw - 48px), 320px';
 
   // ---- group by year, newest first ----------------------------
   var years = [];
@@ -78,13 +86,20 @@
     var frame = document.createElement('span');
     frame.className = 'tile__frame';
 
+    var picture = document.createElement('picture');
+    var source = document.createElement('source');
+    source.type = 'image/webp';
+    source.srcset = webpSet(r.src);
+    source.sizes = TILE_SIZES;
     var img = document.createElement('img');
-    img.src = r.thumb || r.src;
+    img.src = base(r.src) + '-1080.jpg';
     img.alt = altText(r);
     img.loading = 'lazy';
     img.decoding = 'async';
     if (r.position) img.style.objectPosition = r.position;
-    frame.appendChild(img);
+    picture.appendChild(source);
+    picture.appendChild(img);
+    frame.appendChild(picture);
     btn.appendChild(frame);
 
     var meta = metaText(r);
@@ -155,6 +170,7 @@
   // ---- lightbox --------------------------------------------
   var lb = document.getElementById('lightbox');
   var lbImg = document.getElementById('lightboxImg');
+  var lbSrc = document.getElementById('lightboxSrc'); // <source type="image/webp">
   var lbCap = document.getElementById('lightboxCap');
   var lbCount = document.getElementById('lightboxCounter');
   var lbStatus = document.getElementById('lightboxStatus');
@@ -196,7 +212,8 @@
     var r = records[i];
     if (!r) return;
     lbIndex = i;
-    lbImg.src = r.src;
+    if (lbSrc) lbSrc.srcset = base(r.src) + '-1080.webp';
+    lbImg.src = base(r.src) + '-1080.jpg';
     lbImg.alt = altText(r);
     var meta = metaText(r);
     var text = r.caption ? r.caption + (meta ? '   —   ' + meta : '') : meta;
