@@ -26,7 +26,7 @@ PHOTOS=(
   2026/radar_prone_rock.jpg 2026/radar_solo.jpg
   2026/radon_popelka_stand_stay_lethal.jpg 2026/whitcher_peek.jpg
   2026/whitcher_quarry_stay_lethal_fix.jpg
-  misc/Me_train_ondra_aim_cropped_fixed.jpg misc/WHITCHER_TRENCH.jpg
+  misc/WHITCHER_TRENCH.jpg
   misc/Seba_Aim_Back_cropped_Fixed.jpg
 )
 
