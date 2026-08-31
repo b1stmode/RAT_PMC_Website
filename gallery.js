@@ -36,11 +36,26 @@
   // Stage 9: photos ship as <picture> — a WebP srcset + a JPEG <img> fallback,
   // all derived from the record's src (e.g. imgs/2026/foo.jpg -> imgs/2026/foo-512.webp).
   function base(src) { return src.replace(/\.[^.]+$/, ''); }
+  function isWide(r) { return r.layout === 'wide'; }
   function webpSet(src) {
     var b = base(src);
     return b + '-512.webp 512w, ' + b + '-768.webp 768w, ' + b + '-1080.webp 1080w';
   }
+  // wide "lead" images ship a shorter ladder: -640 / -1280 (+ -1280.jpg fallback)
+  function wideSet(src) {
+    var b = base(src);
+    return b + '-640.webp 640w, ' + b + '-1280.webp 1280w';
+  }
+  function fallbackSrc(r) { return base(r.src) + (isWide(r) ? '-1280.jpg' : '-1080.jpg'); }
   var TILE_SIZES = '(max-width: 700px) calc(100vw - 48px), 320px';
+  var WIDE_SIZES = 'calc(100vw - 48px)';
+
+  // per-year blurbs (optional) — { "2026": "…", … }
+  var yearNotes = {};
+  try {
+    var ny = document.getElementById('galleryYears');
+    if (ny) yearNotes = JSON.parse(ny.textContent) || {};
+  } catch (e) { /* blurbs are optional */ }
 
   // ---- group by year, newest first ----------------------------
   var years = [];
@@ -65,6 +80,13 @@
     section.appendChild(h2);
     section.setAttribute('aria-labelledby', h2.id);
 
+    if (yearNotes[y]) {
+      var note = document.createElement('p');
+      note.className = 'gallery-year__note';
+      note.textContent = yearNotes[y];
+      section.appendChild(note);
+    }
+
     var grid = document.createElement('div');
     grid.className = 'gallery-grid';
     var group = byYear[y];
@@ -77,7 +99,7 @@
   function buildTile(r, idx, total, year) {
     var btn = document.createElement('button');
     btn.type = 'button';
-    btn.className = 'tile' + (r.featured ? ' tile--featured' : '');
+    btn.className = 'tile' + (r.featured ? ' tile--featured' : '') + (isWide(r) ? ' tile--wide' : '');
     btn.dataset.i = r._i;
     btn.setAttribute('aria-label', r.caption
       ? 'Open photo: ' + r.caption
@@ -89,10 +111,10 @@
     var picture = document.createElement('picture');
     var source = document.createElement('source');
     source.type = 'image/webp';
-    source.srcset = webpSet(r.src);
-    source.sizes = TILE_SIZES;
+    source.srcset = isWide(r) ? wideSet(r.src) : webpSet(r.src);
+    source.sizes = isWide(r) ? WIDE_SIZES : TILE_SIZES;
     var img = document.createElement('img');
-    img.src = base(r.src) + '-1080.jpg';
+    img.src = fallbackSrc(r);
     img.alt = altText(r);
     img.loading = 'lazy';
     img.decoding = 'async';
@@ -212,8 +234,9 @@
     var r = records[i];
     if (!r) return;
     lbIndex = i;
-    if (lbSrc) lbSrc.srcset = base(r.src) + '-1080.webp';
-    lbImg.src = base(r.src) + '-1080.jpg';
+    var big = isWide(r) ? '-1280' : '-1080';
+    if (lbSrc) lbSrc.srcset = base(r.src) + big + '.webp';
+    lbImg.src = base(r.src) + big + '.jpg';
     lbImg.alt = altText(r);
     var meta = metaText(r);
     var text = r.caption ? r.caption + (meta ? '   —   ' + meta : '') : meta;

@@ -89,13 +89,15 @@
       Optional fields:
         "caption"  short title shown under the tile and in the viewer
         "location" e.g. "Quarry AO"        "unit" e.g. "Bravo Detachment"
-        "featured" true  -> wider (2-column) tile
         "position" CSS object-position, e.g. "center 20%", to nudge the crop
         "alt"      accessibility description (defaults to caption / generic)
-      Newest year is shown first automatically.
+        "layout": "wide"  -> full-width 16:9 lead tile (put it first in its year);
+                  its derivatives are <base>-{640,1280}.webp + <base>-1280.jpg
+      Newest year is shown first automatically. Per-year blurbs: #galleryYears below.
     -->
     <script type="application/json" id="galleryData">
     [
+      { "src": "imgs/2026/radon-popelka-wide.jpg", "year": 2026, "layout": "wide", "alt": "Two operators moving through a field of young pine under overcast light" },
       { "src": "imgs/2026/cukrak_flag.jpg", "year": 2026, "alt": "Two operators hold up a black unit flag in a sunny forest clearing, a radio tower behind" },
       { "src": "imgs/2026/me_hug.jpg", "year": 2026, "alt": "Operator in flecktarn kneeling beside a torso target dummy propped in a chair" },
       { "src": "imgs/2026/me_cover_low_ready.jpg", "year": 2026, "alt": "Operator in flecktarn kneeling at a wall in winter brush, rifle held low" },
@@ -108,21 +110,32 @@
       { "src": "imgs/2026/me_nvg_line_left_stay_lethal_fix.jpg", "year": 2026, "alt": "Near-dark frame of an operator wearing a night-vision device" },
       { "src": "imgs/2026/radon_popelka_stand_stay_lethal.jpg", "year": 2026, "alt": "Two operators standing in a field of pine saplings under an overcast sky" },
       { "src": "imgs/2026/whitcher_quarry_stay_lethal_fix.jpg", "year": 2026, "alt": "Lone operator standing in a gravel quarry, treeline on the ridge behind" },
+      { "src": "imgs/2025/us-aim-back.jpg", "year": 2025, "layout": "wide", "alt": "Two operators seen from behind on a training range, treeline ahead" },
       { "src": "imgs/2025/SEBA_LOOK_UP.jpg", "year": 2025 },
       { "src": "imgs/2025/ME_CLIFF_LOOK.jpg", "year": 2025 },
       { "src": "imgs/2025/Me_Teach_Low.jpg", "year": 2025 },
       { "src": "imgs/2025/Me_Teach_Ondra_Aim.jpg", "year": 2025 },
       { "src": "imgs/2025/ME_CQB.jpg", "year": 2025 },
       { "src": "imgs/2025/Whitcher_Trench_Aim_Better_Right.jpg", "year": 2025 },
+      { "src": "imgs/2024/three-operators.jpg", "year": 2024, "layout": "wide", "alt": "Three operators standing together in bare winter woodland" },
       { "src": "imgs/2024/Me_CloseUp_right.jpg", "year": 2024 },
       { "src": "imgs/2024/Seba_reload_right.jpg", "year": 2024 },
       { "src": "imgs/2024/Ondra_Back_right.jpg", "year": 2024 },
       { "src": "imgs/2024/Me_Far_Right.jpg", "year": 2024 },
       { "src": "imgs/2024/HYG_Right.jpg", "year": 2024 },
       { "src": "imgs/2024/SL_Right.jpg", "year": 2024 },
+      { "src": "imgs/2023/nato-flag-ridge.jpg", "year": 2023, "layout": "wide", "alt": "Two operators on a ridge holding a NATO flag, open countryside and hills beyond" },
       { "src": "imgs/2023/SSLBetter_Right.jpg", "year": 2023 },
       { "src": "imgs/2023/Me_Behind_Right.jpg", "year": 2023 }
     ]
+    </script>
+    <script type="application/json" id="galleryYears">
+    {
+      "2026": "A long quiet stretch, then straight back at it. RAT PMC holds.",
+      "2025": "RAT PMC founded. Organised, deliberate, with a purpose.",
+      "2024": "The mindset that became the foundation of RAT PMC settled in.",
+      "2023": "Friends with a shared hobby who decided to get good at it."
+    }
     </script>
     <script src="gallery.js" defer></script>
   </body>
