@@ -37,8 +37,8 @@
    <picture class="hero__media">
      <source media="(max-width: 640px)" type="image/webp" srcset="imgs/hero-portrait.webp">
      <source media="(max-width: 640px)" srcset="imgs/hero-portrait.jpg">
-     <source type="image/webp" srcset="imgs/hero-wide.webp">
-     <img src="imgs/hero-wide.jpg" alt="Two RAT PMC members on a training range, treeline behind" fetchpriority="high">
+     <source type="image/webp" srcset="imgs/hero-wide.webp 1280w, imgs/hero-wide-1920.webp 1920w, imgs/hero-wide-2560.webp 2560w" sizes="100vw">
+     <img src="imgs/hero-wide.jpg" alt="Two RAT PMC members running pistol drills on a dry field, seen from above" fetchpriority="high">
    </picture>
    <div class="hero__inner">
      <p class="eyebrow">Czech Republic</p>
@@ -52,24 +52,20 @@
     <p class="eyebrow" id="field-label">From the field</p>
     <div class="intro-slideshow">
       <picture class="slide">
-        <source type="image/webp" srcset="imgs/2025/ME_CLIFF_LOOK-512.webp 512w, imgs/2025/ME_CLIFF_LOOK-768.webp 768w, imgs/2025/ME_CLIFF_LOOK-1080.webp 1080w" sizes="(max-width: 640px) 92vw, 600px">
-        <img src="imgs/2025/ME_CLIFF_LOOK-1080.jpg" alt="Operator in flecktarn moving past a moss-covered rock overhang in the forest">
-      </picture>
-      <picture class="slide">
-        <source type="image/webp" srcset="imgs/SEBA_AIM_BACK-512.webp 512w, imgs/SEBA_AIM_BACK-768.webp 768w, imgs/SEBA_AIM_BACK-1080.webp 1080w" sizes="(max-width: 640px) 92vw, 600px">
-        <img src="imgs/SEBA_AIM_BACK-1080.jpg" alt="Operator in a leaf ghillie hood aiming a carbine past a boulder in sunlit woods">
-      </picture>
-      <picture class="slide">
-        <source type="image/webp" srcset="imgs/2025/ME_CQB-512.webp 512w, imgs/2025/ME_CQB-768.webp 768w, imgs/2025/ME_CQB-1080.webp 1080w" sizes="(max-width: 640px) 92vw, 600px">
-        <img src="imgs/2025/ME_CQB-1080.jpg" alt="Team member in a red flannel shirt shouldering a compact carbine on a garden deck">
-      </picture>
-      <picture class="slide">
-        <source type="image/webp" srcset="imgs/2026/radon_popelka_stand_stay_lethal-512.webp 512w, imgs/2026/radon_popelka_stand_stay_lethal-768.webp 768w, imgs/2026/radon_popelka_stand_stay_lethal-1080.webp 1080w" sizes="(max-width: 640px) 92vw, 600px">
-        <img src="imgs/2026/radon_popelka_stand_stay_lethal-1080.jpg" alt="Two operators standing in a field of pine saplings under an overcast sky">
+        <source type="image/webp" srcset="imgs/2026/radar_prone_rock-512.webp 512w, imgs/2026/radar_prone_rock-768.webp 768w, imgs/2026/radar_prone_rock-1080.webp 1080w" sizes="(max-width: 640px) 92vw, 600px">
+        <img src="imgs/2026/radar_prone_rock-1080.jpg" alt="Operator prone on a moss-covered log, aiming a scoped rifle into misty woods">
       </picture>
       <picture class="slide">
         <source type="image/webp" srcset="imgs/2026/whitcher_quarry_stay_lethal_fix-512.webp 512w, imgs/2026/whitcher_quarry_stay_lethal_fix-768.webp 768w, imgs/2026/whitcher_quarry_stay_lethal_fix-1080.webp 1080w" sizes="(max-width: 640px) 92vw, 600px">
-        <img src="imgs/2026/whitcher_quarry_stay_lethal_fix-1080.jpg" alt="Lone operator standing in a gravel quarry, treeline on the ridge behind">
+        <img src="imgs/2026/whitcher_quarry_stay_lethal_fix-1080.jpg" alt="Lone operator standing in a gravel quarry under an overcast sky">
+      </picture>
+      <picture class="slide">
+        <source type="image/webp" srcset="imgs/2026/radon_popelka_stand_stay_lethal-512.webp 512w, imgs/2026/radon_popelka_stand_stay_lethal-768.webp 768w, imgs/2026/radon_popelka_stand_stay_lethal-1080.webp 1080w" sizes="(max-width: 640px) 92vw, 600px">
+        <img src="imgs/2026/radon_popelka_stand_stay_lethal-1080.jpg" alt="Two operators standing in a field of young pine under overcast light">
+      </picture>
+      <picture class="slide">
+        <source type="image/webp" srcset="imgs/2026/me_cover_low_ready-512.webp 512w, imgs/2026/me_cover_low_ready-768.webp 768w, imgs/2026/me_cover_low_ready-1080.webp 1080w" sizes="(max-width: 640px) 92vw, 600px">
+        <img src="imgs/2026/me_cover_low_ready-1080.jpg" alt="Operator in flecktarn crouched by a tree in bare winter brush, weapon ready">
       </picture>
       <div class="intro-controls">
         <button type="button" class="intro-pause" aria-label="Pause slideshow" aria-pressed="false" onclick="toggleIntroPause()"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg></button>
@@ -78,7 +74,6 @@
           <button type="button" class="dot" aria-label="Image 2" onclick="currentIntroSlide(1)"></button>
           <button type="button" class="dot" aria-label="Image 3" onclick="currentIntroSlide(2)"></button>
           <button type="button" class="dot" aria-label="Image 4" onclick="currentIntroSlide(3)"></button>
-          <button type="button" class="dot" aria-label="Image 5" onclick="currentIntroSlide(4)"></button>
         </div>
       </div>
     </div>

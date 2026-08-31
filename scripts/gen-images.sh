@@ -26,7 +26,6 @@ PHOTOS=(
   2026/radar_prone_rock.jpg 2026/radar_solo.jpg
   2026/radon_popelka_stand_stay_lethal.jpg 2026/whitcher_peek.jpg
   2026/whitcher_quarry_stay_lethal_fix.jpg
-  misc/SEBA_AIM_BACK.jpg
   misc/Me_train_ondra_aim_cropped_fixed.jpg misc/WHITCHER_TRENCH.jpg
   misc/Seba_Aim_Back_cropped_Fixed.jpg
 )
@@ -36,7 +35,7 @@ WIDE=(
   2023/nato-flag-ridge.jpg
   2024/three-operators.jpg
   2025/us-aim-back.jpg
-  2026/radon-popelka-wide.jpg
+  2026/radar-duo-banner.png
 )
 
 kb(){ echo "$(( $(stat -f%z "$1") / 1024 ))"; }
@@ -68,8 +67,19 @@ for p in "${WIDE[@]}"; do
     "$(kb "${b}-640.webp")" "$(kb "${b}-1280.webp")" "$(kb "${b}-1280.jpg")"
 done
 
-echo "== hero (add .webp only; .jpg untouched) =="
-cwebp -quiet -q 80 imgs/hero-wide.jpg     -o imgs/hero-wide.webp
-cwebp -quiet -q 80 imgs/hero-portrait.jpg -o imgs/hero-portrait.webp
-printf '  hero-wide.webp %sK   hero-portrait.webp %sK\n' "$(kb imgs/hero-wide.webp)" "$(kb imgs/hero-portrait.webp)"
+echo "== hero =="
+# wide: from the 3264px source in _originals -> 1280/1920/2560 webp + a 1600 jpg fallback
+hs=imgs/_originals/misc/hero-wide-src.png
+cwebp -quiet -q 78 -m 6 -resize 1280 0 "$hs" -o imgs/hero-wide.webp
+cwebp -quiet -q 76 -m 6 -resize 1920 0 "$hs" -o imgs/hero-wide-1920.webp
+cwebp -quiet -q 74 -m 6 -resize 2560 0 "$hs" -o imgs/hero-wide-2560.webp
+sips -Z 1600 -s format jpeg -s formatOptions normal "$hs" --out imgs/hero-wide.jpg >/dev/null
+# portrait (mobile): a centred 4:5 crop of the same source, framed on the near shooter
+hp=imgs/_originals/misc/hero-portrait-src.png
+sips -c 2280 1824 "$hs" --out "$hp" >/dev/null
+cwebp -quiet -q 80 -m 6 -resize 880 0 "$hp" -o imgs/hero-portrait.webp
+sips -Z 1100 -s format jpeg -s formatOptions normal "$hp" --out imgs/hero-portrait.jpg >/dev/null
+printf '  hero-wide %s/%s/%s webp + %s jpg   hero-portrait.webp %sK\n' \
+  "$(kb imgs/hero-wide.webp)" "$(kb imgs/hero-wide-1920.webp)" "$(kb imgs/hero-wide-2560.webp)" \
+  "$(kb imgs/hero-wide.jpg)" "$(kb imgs/hero-portrait.webp)"
 echo "done."
